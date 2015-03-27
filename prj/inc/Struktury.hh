@@ -1,5 +1,5 @@
-#ifndef INTERFEJS_H
-#define INTERFEJS_H
+#ifndef INTERFEJS_HH
+#define INTERFEJS_HH
 #include <iostream>
 #include <cstring>
 #include <sstream>
@@ -17,6 +17,7 @@
  * klasa bazowa dla Stosu,Kolejki i Listy,zarowno w implemenetacji wskaznikowej 
  * jak i tablicowej
  */
+template <class Typ>
 class Struktury{
 
 public:
@@ -29,7 +30,7 @@ public:
  *
  *\param[in] k - wartosc typu calkowitnego, ktora bedzie umieszona w strukturze
  */
-  virtual void _Push(int k,unsigned int Pozycja = 1) = 0;
+  virtual void _Push(Typ k,unsigned int Pozycja) = 0;
 /*!
  *\brief Metoda usuwajaca element
  *
@@ -40,20 +41,20 @@ public:
  *\return
  * Zwraca wartosc elementu z odpowiedniego dla wybranej struktury miejsca 
  */
-  virtual int _Pop(unsigned int Pozycja = 1 ) = 0;
+  virtual Typ _Pop(unsigned int Pozycja) = 0;
 /*!
  *\brief Metoda zwracajaca rozmiar Struktury
  *
  * Metoda ma zadanie zwrocic bierzaca liczbe elementow nalezacych do danej struktury
  *\return - Bierzaca liczba elementow Struktury danych
  */ 
-  virtual unsigned int _Rozmiar() = 0;
+  virtual unsigned int _Rozmiar() const = 0;
 /*!
  *\brief Metoda wyswietlajaca dane 
  *
  * Metoda ma za zadanie wyswietlic wszytskie dane nalezace do struktury 
  */
-  virtual void _Pokaz() = 0;
+  virtual void _Pokaz() const = 0;
 /*!
  *\brief Metoda zwalniajaca pamiec
  *
