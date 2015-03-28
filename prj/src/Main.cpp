@@ -5,7 +5,7 @@
 #include"Kolejka.hh"
 #include"StosTab.hh"
 #include"StrukturyBenchmark.hh"
-#define ILOSC_DANYCH 10
+#define ILOSC_DANYCH 100000000
 using namespace std;
 /*!
  *\file
@@ -13,14 +13,14 @@ using namespace std;
  */
 int main(int argc,char *argv[])
 {
-  ListaTab<double> p;
-  TabListaPod<double> H;
-  Lista<double> L;
-  StrukturyBenchmark<double> K;
-  Stos<double> S;
-  Lista<double> Z;
-  Kolejka<double> k;
-  StosTab<double> B;
+  ListaTab<int> p;
+  TabListaPod<int> H;
+  Lista<int> L;
+  StrukturyBenchmark<int> K;
+  Stos<int> S;
+  Lista<int> Z;
+  Kolejka<int> k;
+  StosTab<int> B;
 
   if(argc < 2)
      {
@@ -61,9 +61,9 @@ int main(int argc,char *argv[])
     {
       cout << "\nTestuje Liste" << endl;
       K._Wczytaj(argv[2],ILOSC_DANYCH); 
-        K._Ustaw(Z);
+      K._Ustaw(Z);
       K._WykonajTest(atoi(argv[1]));
-
+      
       cout << "\nTestuje Stos" << endl;
       K._Ustaw(S);
       K._WykonajTest(atoi(argv[1]));
@@ -74,11 +74,11 @@ int main(int argc,char *argv[])
       
       cout << "\nTestuje liste +1" << endl;
       K._Ustaw(p);
-      K._WykonajTest(atoi(argv[1]));
+      // K._WykonajTest(atoi(argv[1]));
       
       cout << "\nTestuje liste x2" << endl;
       K._Ustaw(H);
-      K._WykonajTest(atoi(argv[1]));
+      //  K._WykonajTest(atoi(argv[1]));
       
       K._Ustaw(B);
       cout << "\nTestuje stos x2" << endl;

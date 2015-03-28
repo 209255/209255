@@ -74,7 +74,30 @@ struct Wezel{
 //****************************************************************************************
   unsigned int _Ilosc;
 //****************************************************************************************
+/*!
+ *\brief Metoda zwalniajaca pamiec zajeta przez struktre
+ *
+ * Metoda ma za zadanie zwolnij pamiec zajeta przez zaladowane do struktury dane,
+ * elementy sa usuwany dopoki wskaznik pokazujacy na poczatek  
+ * kolejki nie bedzie wskazywal na NULL
+ */ 
+
+//****************************************************************************************
+  void _Zwolnij()
+  {
+    Wezel * Temp = _Pierwszy;
+    for(unsigned int i= 1; i < _Ilosc-1; ++i)
+      {
+	Temp = Temp -> _Nast;
+	delete _Pierwszy;
+	_Pierwszy = Temp;
+      }
+    _Ilosc = 0;
+  }
+//****************************************************************************************
+
 public:
+
 //****************************************************************************************
 /*!
  *\brief Konstruktor
@@ -176,26 +199,7 @@ public:
 //****************************************************************************************
   unsigned int _Rozmiar() const{return _Ilosc;}
 //****************************************************************************************
-/*!
- *\brief Metoda zwalniajaca pamiec zajeta przez struktre
- *
- * Metoda ma za zadanie zwolnij pamiec zajeta przez zaladowane do struktury dane,
- * elementy sa usuwany dopoki wskaznik pokazujacy na poczatek  
- * kolejki nie bedzie wskazywal na NULL
- */ 
-//****************************************************************************************
-  void _Zwolnij()
-  {
-    Wezel * Temp = _Pierwszy;
-    for(unsigned int i= 1; i < _Ilosc-1; ++i)
-      {
-	Temp = Temp -> _Nast;
-	delete _Pierwszy;
-	_Pierwszy = Temp;
-      }
-    _Ilosc = 0;
-  }
-//****************************************************************************************	
+	
 };
 
 

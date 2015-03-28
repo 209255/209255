@@ -17,10 +17,13 @@
  * przechowujace dane
  */
 //****************************************************************************************
+
 template<class Typ>
 class StrukturyBenchmark: public BenchmarkInterfejs
 {
+
 private:
+
 //****************************************************************************************
 /*!
  *\brief Pole StrulturyBenchmark
@@ -37,8 +40,36 @@ private:
  */
 //****************************************************************************************
   Typ *W;
-//****************************************************************************************	
-public:
+//****************************************************************************************
+/*!
+ *\brief Metoda alokujaca pamiec 
+ * 
+ * Metoda ma za zadanie zaalokowac odpowiednia ilosc danych w zaleznosci od tego ile 
+ * zostalo ich wczytanych 
+ *
+ *\param[in] n - Ilosc wczytanych danych
+ */
+//****************************************************************************************
+  void _Przydziel(const unsigned int n)
+  {
+    W = new Typ [n];
+    for(unsigned int i = 0; i < n; ++i)
+      W[i] = 0;
+  }
+//****************************************************************************************
+/*!
+ *\brief Metoda zwalniajaca zaalokowana przez struktury pamiec
+ *
+ * Metoda ma za zadanie oproznic zaladowane do struktury dane
+ *\param[in] n - Ilosc danych ktora zostanie zwolniona
+ */ 
+
+//****************************************************************************************
+  void _Zwolnij(const unsigned int n) const
+  {
+    S -> _Zwolnij();
+    //  S-> _Pokaz();
+  }
 //****************************************************************************************
 /*!
  *\brief Metoda wykonujaca test dla odpowiedniej struktury
@@ -51,9 +82,12 @@ public:
   void _Test(const unsigned int n) const 
   {
     for(unsigned int i = 0; i < n; ++i) 
-      S -> _Push(W[i],i+1);
+      S -> _Push(W[i],1);
   }
 //****************************************************************************************
+	
+public:
+
 /*!\brief Metoda Wczytujaca dane
  *
  * Metoda ma za zadanie wczytac dane wejciowe o podanej przez 
@@ -106,40 +140,13 @@ public:
   StrukturyBenchmark(){W =NULL;S= NULL;}
 //****************************************************************************************
 /*!
- *\brief Metoda alokujaca pamiec 
- * 
- * Metoda ma za zadanie zaalokowac odpowiednia ilosc danych w zaleznosci od tego ile 
- * zostalo ich wczytanych 
- *
- *\param[in] n - Ilosc wczytanych danych
- */
-//****************************************************************************************
-  void _Przydziel(const unsigned int n)
-  {
-    W = new Typ [n];
-    for(unsigned int i = 0; i < n; ++i)
-      W[i] = 0;
-  }
-//****************************************************************************************
-/*!
  *\brief Destruktor
  */
 //****************************************************************************************
   virtual ~StrukturyBenchmark(){delete []W;}
 //****************************************************************************************
-/*!
- *\brief Metoda zwalniajaca zaalokowana przez struktury pamiec
- *
- * Metoda ma za zadanie oproznic zaladowane do struktury dane
- *\param[in] n - Ilosc danych ktora zostanie zwolniona
- */ 
-//****************************************************************************************
-  void _Zwolnij(const unsigned int n) const
-  {
-    S -> _Zwolnij();
 
-  }
-//****************************************************************************************
+
 };
 
 

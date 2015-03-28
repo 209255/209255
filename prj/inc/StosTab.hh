@@ -41,7 +41,21 @@ private:
 //****************************************************************************************
   unsigned int _RozmiarT;	
 //****************************************************************************************
+/*!
+ *\brie Metoda zwalniajaca pamiec
+ *
+ *Metoda ma za zadanie zwolnij pamiec zajmowana przez dane, dopoki ilosc elementow listy nie wynosi
+ * 0 wykonywana jest metoda _Pop, aby oproznic stos i zwolnic pamiec
+ */
+//****************************************************************************************
+  void _Zwolnij()
+  {
+    while(_Rozmiar())
+      _Pop(_Rozmiar());
+  }	
+//****************************************************************************************
 public:
+
 //****************************************************************************************
 /*!
  *\brief Konstruktor
@@ -174,18 +188,7 @@ public:
 //****************************************************************************************
   unsigned int _Rozmiar() const{return _RozmiarL;}
 //****************************************************************************************
-/*!
- *\brie Metoda zwalniajaca pamiec
- *
- *Metoda ma za zadanie zwolnij pamiec zajmowana przez dane, dopoki ilosc elementow listy nie wynosi
- * 0 wykonywana jest metoda _Pop, aby oproznic stos i zwolnic pamiec
- */
-//****************************************************************************************
-  void _Zwolnij()
-  {
-    while(_Rozmiar())
-      _Pop(_Rozmiar());
-  }	
-//****************************************************************************************
+
+
 };
 #endif

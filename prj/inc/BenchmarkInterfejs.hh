@@ -27,7 +27,7 @@ using namespace std;
 
 class BenchmarkInterfejs
 {
-public:
+protected:
 //****************************************************************************************
 /*!
  *\brief Metoda Wykonujaca pojedyncza operacje
@@ -45,7 +45,20 @@ public:
  *\param[in] n - liczba wczytywanych danych 
  */
 //****************************************************************************************
-  virtual void _Wczytaj(string PlikIn,const unsigned n) = 0;
+  virtual void _Wczytaj(string PlikIn,const unsigned int n) = 0;
+//****************************************************************************************
+/*!
+ *\brief Metoda zwalniajaca pamiec
+ *
+ * Metoda ma zazadanie wykonac operacje zwalaniania pamieci
+ *\param[in] n - liczba danych ktora bedzie zwolniona z pamieci
+ */
+//****************************************************************************************
+  virtual void _Zwolnij(const unsigned int n) const  = 0;
+//****************************************************************************************
+
+public:
+
 //****************************************************************************************
 /*!
  *\brief Metoda wykonujaca test odpowiedniej struktury
@@ -70,15 +83,7 @@ public:
 //****************************************************************************************
   void _Generator(string PlikOut,int n)const;
 //****************************************************************************************
-/*!
- *\brief Metoda zwalniajaca pamiec
- *
- * Metoda ma zazadanie wykonac operacje zwalaniania pamieci
- *\param[in] n - liczba danych ktora bedzie zwolniona z pamieci
- */
-//****************************************************************************************
-  virtual void _Zwolnij(const unsigned int n) const  = 0;
-//****************************************************************************************
+
 };
 
 #endif

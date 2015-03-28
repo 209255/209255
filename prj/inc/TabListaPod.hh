@@ -41,7 +41,35 @@ private:
 //****************************************************************************************
   unsigned int _RozmiarT;
 //****************************************************************************************	
+void _XRozszerz(const double Ile,unsigned int Pozycja, int k=0)
+{
+  Typ *Temp = new Typ[_RozmiarT = Ile * _RozmiarT];
+  Temp[Pozycja-1] = k;
+  for(unsigned int i = 0;i <_RozmiarL; ++i)
+    {
+      if(i < Pozycja-1){Temp[i] = _L[i];}
+      else{Temp[i+1] = _L[i];}
+    }
+  delete [] _L;
+  _L = Temp;
+}
+//****************************************************************************************
+/*!
+ *\brie Metoda zwalniajaca pamiec
+ *
+ *Metoda ma za zadanie zwolnij pamiec zajmowana przez dane, dopoki ilosc elementow listy nie wynosi
+ * 0 wykonywana jest metoda _Pop, aby oproznic stos i zwolnic pamiec
+ */
+//****************************************************************************************
+void _Zwolnij()
+{
+  while(_RozmiarL)
+      _Pop(1);
+}
+//****************************************************************************************
+
 public:
+
 //****************************************************************************************
 /*!
  *\brief Konstruktor Kopiujacy
@@ -177,32 +205,8 @@ void _Pokaz() const
     std::cout << " ";
   }
 }
-//****************************************************************************************
-/*!
- *\brie Metoda zwalniajaca pamiec
- *
- *Metoda ma za zadanie zwolnij pamiec zajmowana przez dane, dopoki ilosc elementow listy nie wynosi
- * 0 wykonywana jest metoda _Pop, aby oproznic stos i zwolnic pamiec
- */
 //****************************************************************************************	
-void _Zwolnij()
-{
-  while(_RozmiarL)
-      _Pop(1);
-}
-//****************************************************************************************
-void _XRozszerz(const double Ile,unsigned int Pozycja, int k=0)
-{
-  Typ *Temp = new Typ[_RozmiarT = Ile * _RozmiarT];
-  Temp[Pozycja-1] = k;
-  for(unsigned int i = 0;i <_RozmiarL; ++i)
-    {
-      if(i < Pozycja-1){Temp[i] = _L[i];}
-      else{Temp[i+1] = _L[i];}
-    }
-  delete [] _L;
-  _L = Temp;
-}
-//****************************************************************************************	
+
+	
 };
 #endif

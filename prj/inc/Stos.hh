@@ -65,6 +65,27 @@ struct Wezel{
 //****************************************************************************************
 	unsigned int _Ilosc;	
 //****************************************************************************************
+/*!
+ *\brief Metoda zwalniajaca pamiec zajeta przez struktre
+ *
+ * Metoda ma za zadanie zwolnij pamiec zajeta przez zaladowane do struktury dane,
+ * elementy sa usuwany dopoki wskaznik pokazujacy na poczatek  
+ * kolejki nie bedzie wskazywal na NULL
+ */
+//****************************************************************************************
+  void _Zwolnij()
+  {
+    Wezel * Temp = Gora;
+    for(unsigned int i= 0; i < _Ilosc; ++i)
+      {
+	
+	Temp = Temp -> _Nast;
+	delete Gora;
+	Gora = Temp;
+      }
+    _Ilosc = 0;
+  }
+//****************************************************************************************
 
 public:
 
@@ -173,27 +194,7 @@ Stos(const Stos &S)
       }
   }
 //****************************************************************************************
-/*!
- *\brief Metoda zwalniajaca pamiec zajeta przez struktre
- *
- * Metoda ma za zadanie zwolnij pamiec zajeta przez zaladowane do struktury dane,
- * elementy sa usuwany dopoki wskaznik pokazujacy na poczatek  
- * kolejki nie bedzie wskazywal na NULL
- */
-//****************************************************************************************
-  void _Zwolnij()
-  {
-    Wezel * Temp = Gora;
-    for(unsigned int i= 0; i < _Ilosc; ++i)
-      {
-	
-	Temp = Temp -> _Nast;
-	delete Gora;
-	Gora = Temp;
-      }
-    _Ilosc = 0;
-  }
-//****************************************************************************************
+
 };
 
 #endif

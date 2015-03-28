@@ -53,7 +53,30 @@ struct Wezel{
 //****************************************************************************************
   unsigned int _Ilosc;
 //****************************************************************************************
+/*!
+ *\brief Metoda zwalniajaca pamiec zajeta przez struktre
+ *
+ * Metoda ma za zadanie zwolnij pamiec zajeta przez zaladowane do struktury dane,
+ * elementy sa usuwany dopoki wskaznik pokazujacy na poczatek  
+ * listy nie bedzie wskazywal na NULL
+ */ 
+//****************************************************************************************
+  void _Zwolnij()
+  {
+    // cout << "zwalniam" << endl;
+    Wezel * Temp = Glowa;
+    for(unsigned int i= 1; i < _Ilosc-1; ++i)
+      {
+	Temp = Temp -> _Nast;
+	delete Glowa;
+	Glowa = Temp;
+      }
+    _Ilosc = 0;
+}
+//****************************************************************************************
+
 public:
+
 //****************************************************************************************
 /*!
  *\brief Metoda dodajaca Wezel
@@ -184,27 +207,7 @@ public:
       }
   }
 //***************************************************************************************   
-/*!
- *\brief Metoda zwalniajaca pamiec zajeta przez struktre
- *
- * Metoda ma za zadanie zwolnij pamiec zajeta przez zaladowane do struktury dane,
- * elementy sa usuwany dopoki wskaznik pokazujacy na poczatek  
- * listy nie bedzie wskazywal na NULL
- */ 
-//****************************************************************************************
-  void _Zwolnij()
-  {
-    // cout << "zwalniam" << endl;
-    Wezel * Temp = Glowa;
-    for(unsigned int i= 1; i < _Ilosc-1; ++i)
-      {
-	Temp = Temp -> _Nast;
-	delete Glowa;
-	Glowa = Temp;
-      }
-    _Ilosc = 0;
-}
-//****************************************************************************************
+
 
 };
 #endif

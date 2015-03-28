@@ -4,6 +4,8 @@
 #include <cstring>
 #include <sstream>
 #include <fstream>
+
+//***********************************************************************************
 /*!
  *\file Definicja klasy Struktury 
  *
@@ -11,16 +13,20 @@
  * abstrakcyjna i bazowa dla pochodnych Struktur danych.
  * Zawiera deklaracje metod czysto wirtualnych
  */
+//***********************************************************************************
 
+//***********************************************************************************
 /*!
  *\brief Modeluje pojecie Struktury danych,
  * klasa bazowa dla Stosu,Kolejki i Listy,zarowno w implemenetacji wskaznikowej 
  * jak i tablicowej
  */
+//***********************************************************************************
 template <class Typ>
 class Struktury{
 
 public:
+//***********************************************************************************
 /*!
  *\brief Metoda dodajaca kolejny element struktury
  *
@@ -30,7 +36,9 @@ public:
  *
  *\param[in] k - wartosc typu calkowitnego, ktora bedzie umieszona w strukturze
  */
+//***********************************************************************************
   virtual void _Push(Typ k,unsigned int Pozycja) = 0;
+//***********************************************************************************
 /*!
  *\brief Metoda usuwajaca element
  *
@@ -41,26 +49,34 @@ public:
  *\return
  * Zwraca wartosc elementu z odpowiedniego dla wybranej struktury miejsca 
  */
+//***********************************************************************************
   virtual Typ _Pop(unsigned int Pozycja) = 0;
+//***********************************************************************************
 /*!
  *\brief Metoda zwracajaca rozmiar Struktury
  *
  * Metoda ma zadanie zwrocic bierzaca liczbe elementow nalezacych do danej struktury
  *\return - Bierzaca liczba elementow Struktury danych
  */ 
+//***********************************************************************************
   virtual unsigned int _Rozmiar() const = 0;
+//***********************************************************************************
 /*!
  *\brief Metoda wyswietlajaca dane 
  *
  * Metoda ma za zadanie wyswietlic wszytskie dane nalezace do struktury 
  */
+//***********************************************************************************
   virtual void _Pokaz() const = 0;
+//***********************************************************************************
 /*!
  *\brief Metoda zwalniajaca pamiec
  *
  *Metoda ma za zadanie zwolnic pamiec uzywana przy zapelnienianiu danej struktry danymi
  */
+//***********************************************************************************
   virtual void _Zwolnij() = 0;
+//***********************************************************************************
 
   };
 #endif

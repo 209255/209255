@@ -14,7 +14,7 @@ using namespace std;
 void BenchmarkInterfejs:: _WykonajTest(const unsigned int Ilosc_Pow) const
 {
   double Wynik = 0;
-  unsigned int Tablica_Rozmiarow[] = {100,1000,10000,100000,200000};
+  unsigned int Tablica_Rozmiarow[] = {100,1000,10000,100000,100000};
    for (unsigned int i = 0; i < ( sizeof(Tablica_Rozmiarow) / sizeof(unsigned int) ); ++i)
      {
      cout << "Pracuje nad " << Tablica_Rozmiarow[i] << " Danych : " << endl;
@@ -25,7 +25,7 @@ void BenchmarkInterfejs:: _WykonajTest(const unsigned int Ilosc_Pow) const
 	 clock_t Koniec = clock();
 	 Wynik += ((Koniec - Start)/ (double)
 		   (CLOCKS_PER_SEC / 1000)) ;
-	  this -> _Zwolnij(Tablica_Rozmiarow[i]);
+	 this -> _Zwolnij(Tablica_Rozmiarow[i]);
        }
       cout << Wynik/Ilosc_Pow << endl;
    }
