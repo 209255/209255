@@ -13,7 +13,6 @@ public:
   int &operator [](const std::string Klucz); 
   // TablicaAso(){TablicaHash();}
   void Usun_wszystkie();
-
 };
 
 
