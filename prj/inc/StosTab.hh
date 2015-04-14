@@ -85,7 +85,7 @@ public:
  *\brief Destruktor obiektu
  */
 //****************************************************************************************
-  ~StosTab(){delete [] _L;};
+  virtual~ StosTab(){delete [] _L;};
 //****************************************************************************************	
 /*!
  *\brief Metoda wypisujaca elemeny Stosu
@@ -99,8 +99,8 @@ public:
     if(_Rozmiar() == 0)
       std::cout << "Brak elementow do wyswietlenia" << std::endl;
     else{
-      for(unsigned int i = 0; i < _Rozmiar(); ++i)
-	std::cout << _L[i] << std::endl;
+      //for(unsigned int i = 0; i < _Rozmiar(); ++i)
+	//	std::cout << _L[i] << std::endl;
     }
   }
 //****************************************************************************************    
@@ -189,6 +189,7 @@ public:
   unsigned int _Rozmiar() const{return _RozmiarL;}
 //****************************************************************************************
 
-
+  Typ _Wartosc(unsigned int Index)const {return _L[Index];}
+  Typ &_Adres(unsigned int Index) {return _L[Index];}
 };
 #endif
