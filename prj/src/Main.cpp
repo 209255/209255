@@ -14,11 +14,7 @@ int main(int argc,char *argv[])
   O["Napis"] = 10;
   O["marzena"] = 90;
   O["mazrena"] = 9;
-  
   cout << O["Napis"] << endl;
-  cout << O("marzena")  << endl;
-  cout << O("mazrena")  << endl;
-  cout << O("marzean")  << endl;
- 
+  cout << O["Npais"] << endl;
   return 0;
 }

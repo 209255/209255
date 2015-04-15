@@ -7,6 +7,9 @@ CPPFLAGS= -c -g -Iinc -Wall -pedantic -std=c++11
 Struktury: obj/BenchmarkInterfejs.o obj/TablicaHash.o obj/TablicaAso.o  obj/Main.o
 	g++ -Wall -pedantic -o Struktury obj/*.o
 
+obj:
+	mkdir obj
+
 obj/Main.o: src/Main.cpp inc/*.hh
 	g++ ${CPPFLAGS} -o obj/Main.o src/Main.cpp
 

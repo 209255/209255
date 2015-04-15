@@ -41,6 +41,7 @@ void TablicaHash::_Wyczysc()
     }
   cout << "Usuwanie zakończone sukcesem!" << endl;
 }
+/*
 //***********************************************************************************
 void TablicaHash::_Dodaj(const int Data,const string Klucz)
 {
@@ -53,8 +54,9 @@ void TablicaHash::_Dodaj(const int Data,const string Klucz)
     }
   else{ _Tab[Index] -> _Push(Para);}
 }
+*/
 //***********************************************************************************
-int& TablicaHash::_Dodaj(const string Klucz)
+int& TablicaHash::_Dodaj(const string &Klucz)
 {
   const Element Para = _Stworz_Rekord(0,Klucz);
   const unsigned int Index = _Haszuj(Klucz);
@@ -76,14 +78,7 @@ int& TablicaHash::_Dodaj(const string Klucz)
        << endl; exit(1);
 }
 //***********************************************************************************
-void TablicaHash::_PokazRekord(const string Klucz) const
-{
- unsigned int index = _Haszuj(Klucz);
-  for(unsigned int i = 0; i < _Tab[index] -> _Rozmiar(); ++i)
-    _Tab[index]-> _Pokaz();
-}
-//***********************************************************************************
-int TablicaHash::_Zwroc(const string Klucz) const
+const int TablicaHash::_Zwroc(const string &Klucz) const
 {
   const unsigned int index = _Haszuj(Klucz);
   if(!_Tab[index]){
