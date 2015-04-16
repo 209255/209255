@@ -43,9 +43,13 @@ public:
  *\brief Metoda usuwajaca element
  *
  * Metoda ma za zadanie usunac element i w zaleznosci od implementowanej struktury
- * bedzie to usuwany element usuwany z poczatk,końca lub w przypadku listy z dowolnego jej miejsca
- *\param[in] Pozycja - Numer elementu ,ktory zostanie dodany. Argument ma znaczenie tylko w przypadku listy
+ * bedzie to usuwany element usuwany z poczatk,końca lub w przypadku listy z dowolnego 
+ * jej miejsca
+ *
+ *\param[in] Pozycja - Numer elementu ,ktory zostanie dodany. Argument ma znaczenie 
+ * tylko w przypadku listy
  * i domyślnie jest ustawiony, tak aby element był dodawany zawsze na poczatku listy
+ *
  *\return
  * Zwraca wartosc elementu z odpowiedniego dla wybranej struktury miejsca 
  */

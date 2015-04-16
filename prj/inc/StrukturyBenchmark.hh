@@ -2,7 +2,8 @@
 #define BENCHMARK_HH
 
 #include "BenchmarkInterfejs.hh"
-#include "Struktury.hh"
+#include "TablicaAso.hh"
+
 //****************************************************************************************
 /*!
  *\file Definicja Klasy StrukturyBenchmark
@@ -18,12 +19,12 @@
  */
 //****************************************************************************************
 
-template<class Typ>
+
 class StrukturyBenchmark: public BenchmarkInterfejs
 {
 
 private:
-
+ 
 //****************************************************************************************
 /*!
  *\brief Pole StrulturyBenchmark
@@ -31,7 +32,7 @@ private:
  * odpowiednie dla danej strktury metody
  */
 //****************************************************************************************
-  Struktury<Typ> *S;
+   TablicaAso *W;
 //****************************************************************************************	
 /*!
  *\brief Pole StrkturyBenchmark
@@ -39,37 +40,15 @@ private:
  * z pliku danych
  */
 //****************************************************************************************
-  Typ *W;
+  int * _Wartosci;
 //****************************************************************************************
 /*!
- *\brief Metoda alokujaca pamiec 
- * 
- * Metoda ma za zadanie zaalokowac odpowiednia ilosc danych w zaleznosci od tego ile 
- * zostalo ich wczytanych 
- *
- *\param[in] n - Ilosc wczytanych danych
+ *\brief Pole StrkturyBenchmark
+ *Pole zawiera wskaznik na string, sluzy on do alokowania pamieci dla wczytanych 
+ * z pliku danych
  */
 //****************************************************************************************
-  void _Przydziel(const unsigned int n)
-  {
-    W = new Typ [n];
-    for(unsigned int i = 0; i < n; ++i)
-      W[i] = 0;
-  }
-//****************************************************************************************
-/*!
- *\brief Metoda zwalniajaca zaalokowana przez struktury pamiec
- *
- * Metoda ma za zadanie oproznic zaladowane do struktury dane
- *\param[in] n - Ilosc danych ktora zostanie zwolniona
- */ 
-
-//****************************************************************************************
-  void _Zwolnij(const unsigned int n) const
-  {
-    S -> _Zwolnij();
-    //  S-> _Pokaz();
-  }
+  std::string * _Klucze;
 //****************************************************************************************
 /*!
  *\brief Metoda wykonujaca test dla odpowiedniej struktury
@@ -79,15 +58,17 @@ private:
  * \param[in] n - ilosc danych ktora zapelnona struktura 
  */
 //****************************************************************************************
-  void _Test(const unsigned int n) const 
-  {
-    for(unsigned int i = 0; i < n; ++i) 
-      S -> _Push(W[i],1);
-   }
+  void _Test(const unsigned int n) const;
 //****************************************************************************************
-	
-public:
+  void _Zaladuj(const unsigned int n) const; 
+//**************************************************************************************** 
+  void Przydziel();
+//****************************************************************************************
 
+public:
+//****************************************************************************************
+  void _Ustaw(TablicaAso &A){W = &A;}
+//****************************************************************************************
 /*!\brief Metoda Wczytujaca dane
  *
  * Metoda ma za zadanie wczytac dane wejciowe o podanej przez 
@@ -97,58 +78,9 @@ public:
  *\param[in] Ilosc - Ilosc danych jaka bedzie wczytywana
  */
 //****************************************************************************************
-  void _Wczytaj(string PlikIn,const unsigned int Ilosc)
-  {
-    ifstream Plik_in;
-    _Przydziel(Ilosc);
-    Plik_in.open(PlikIn.c_str(),ios::in);
-    if(!Plik_in)
-      {
-      std::cerr << "Blad przy otwieraniu Pliku: " << PlikIn << std::endl;
-      }
-    else
-      {
-	for(unsigned int i = 0; i< Ilosc; ++i)
-	  {
-	    Plik_in >> W[i];
-	    if(Plik_in.eof())
-	      {
-		std::cout << "Napotkany EOF przed wczytaniem wszytskich danych" 
-			  << std::endl;
-	      }
-	  }
-      }
-    Plik_in.close();
-  }
+  void _Wczytaj(string PlikWart,string PlikKlucz);
 //****************************************************************************************
-/*!
- *\brief Metoda przypisujaca obiekt danej struktury 
- * 
- * Metoda ma za zadanie pokazywac na testowana obecnie strukture danych, 
- * aby za pomoca wskaznika wywolywac metody z odpowiednich struktur
- *\param[in] K - Adres aktualnie testowanego obiektu danej struktury
- */
+  void _IleKolizja(){W -> IloscKolizji();}
 //****************************************************************************************
-  void _Ustaw(Struktury<Typ> &K){S = &K;}
-//****************************************************************************************
-/*!
- *\brief Konstruktor
- *
- * Konstruktor sprawia ze wskazniki nowo powstalego obiektu wskazuja na NULL
- */
-//****************************************************************************************
-  StrukturyBenchmark(){W =NULL;S= NULL;}
-//****************************************************************************************
-/*!
- *\brief Destruktor
- */
-//****************************************************************************************
-  virtual ~StrukturyBenchmark(){delete []W;}
-//****************************************************************************************
-
-
 };
-
-
-
 #endif

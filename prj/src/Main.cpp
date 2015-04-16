@@ -1,7 +1,7 @@
 #include"StosTab.hh"
-#include"StrukturyBenchmark.hh"
 #include "TablicaAso.hh"
-#define ILOSC_DANYCH 100000000
+#include"StrukturyBenchmark.hh"
+#define ILOSC_POW 10
 using namespace std;
 /*!
  *\file
@@ -10,11 +10,11 @@ using namespace std;
 int main(int argc,char *argv[])
 {
   TablicaAso O;
-
-  O["Napis"] = 10;
-  O["marzena"] = 90;
-  O["mazrena"] = 9;
-  cout << O["Napis"] << endl;
-  cout << O["Npais"] << endl;
+  StrukturyBenchmark S;
+  S._Ustaw(O);
+  // S._Generator();
+  S._Wczytaj("Dane.dat","Klucze.dat");
+  S._WykonajTest(ILOSC_POW);
+ 
   return 0;
 }

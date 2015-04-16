@@ -1,10 +1,11 @@
 #ifndef TABLICAHASH_HH
 #define TABLICAHASH_HH
-#define ROZMIAR 263167
+#define ROZMIAR 224729
 #include<iostream>
 #include<cstring>
 #include <sstream>
 #include <fstream>
+#include "Element.hh"
 #include "StosTab.hh"
 //********************************************************************************
 /*!
@@ -15,40 +16,16 @@
  */
 //********************************************************************************
 
-//********************************************************************************
-/*!
- * \brief Element 
- * Element jest struktura laczaca Klucz i wartosc, razem tworzy rekord tablicy 
- * haszujacej
- */
-//********************************************************************************
 
-struct Element
-  {
-//********************************************************************************
-    /*!
-     *\brief Pole Klucz
-     * Pole przechowuje klucz odpowiedniego rekordu
-     */
-//********************************************************************************
-    std::string _Klucz;
-//********************************************************************************
-    /*!
-     *\brief Pole Wartosc
-     * Pole przechowuje Wartosc skojarzona z danym kluczem 
-     */
-//********************************************************************************
-    int _Wartosc;
-//********************************************************************************
-  };
- 
-///////////////////////////////////////DEFINICJA KLASY////////////////////////////////////////////////////////
+
+
+//////////////////////////////////DEFINICJA KLASY/////////////////////////////////
 class TablicaHash
 {
 private:
 //********************************************************************************
   /*!
-   *\brief Pole klasy Tablcahash
+   *\brief Pole klasy TablicaHash
    *
    * Pole to jest tablica wskaznikow o rozmiarze bedacym liczba pierwsza. 
    * Wskazniki wskazuja na abstrakcyjny typ danych, zamodelowany na wczesniejszych 
@@ -58,8 +35,26 @@ private:
 //********************************************************************************
   StosTab<Element> *_Tab[ROZMIAR];
 //********************************************************************************
-
+/*!
+ *\brief Pole Klasy TablicaHash
+ *
+ * Pole to przechowuje informajce o ilosci kolizji jakie wystapiły podczas
+ * dodawania rekordow do tablicy
+ */
+//********************************************************************************
+  int K;
+//********************************************************************************
 protected:
+
+//********************************************************************************
+  /*!
+   *\bried Metoda Kolizja
+   *
+   * Metoda ma za zadanie zwiekszyc wartosc przechowujaca w polu K,
+   * Wywolywana jest w przypadku wystapienia kolizji
+   */
+//********************************************************************************
+  void _Kolizja();
 //********************************************************************************
   /*!
    *\brief Funkcja Haszujaca
@@ -156,11 +151,17 @@ protected:
   int & _Dodaj(const std::string& Klucz);
 //********************************************************************************
 
-  //bool _Wczytaj(const std::string PlikIn,const unsigned int Ile);
-  // TablicaHash(const TablicaHash &k){}
-  //void _Dodaj(const int Data,const string Klucz);
+public:
 
-
-  
+//********************************************************************************
+  /*!
+   *\brief Wyswietla ilosc kolizji
+   * 
+   * Metoda ma za zadanie wyswietlic ilosc wystapien kolizji 
+   */
+//********************************************************************************
+  void IloscKolizji();
+//********************************************************************************
 };
+////////////////////////////////KONIEC DEFINICJI KLASY///////////////////////////
 #endif

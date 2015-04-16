@@ -1,11 +1,14 @@
 #ifndef BENCHMARKINTERFEJS_HH
 #define BENCHMARKINTERFEJS_HH
+#define DLUGOSC_SLOWA 10
+#define ILOSC 1000000
 
 #include <iostream>
 #include <cstdlib>
 #include <fstream>
 #include <cstring>
-#include "Struktury.hh"
+#include <vector>
+
 using namespace std;
 //****************************************************************************************
 /*!
@@ -45,18 +48,12 @@ protected:
  *\param[in] n - liczba wczytywanych danych 
  */
 //****************************************************************************************
-  virtual void _Wczytaj(string PlikIn,const unsigned int n) = 0;
+  virtual void _Wczytaj(string PlikWart,string PlikKlucz) = 0;
 //****************************************************************************************
-/*!
- *\brief Metoda zwalniajaca pamiec
- *
- * Metoda ma zazadanie wykonac operacje zwalaniania pamieci
- *\param[in] n - liczba danych ktora bedzie zwolniona z pamieci
- */
+  virtual void _Zaladuj(const unsigned int n)const = 0;
 //****************************************************************************************
-  virtual void _Zwolnij(const unsigned int n) const  = 0;
+  virtual void _IleKolizja() = 0;
 //****************************************************************************************
-
 public:
 
 //****************************************************************************************
@@ -68,7 +65,7 @@ public:
  *\param[in] Ilosc_Pow - okresla ile razy ma sie wykonac test
  */
 //****************************************************************************************
-  void _WykonajTest(const unsigned int Ilosc_Pow) const;
+  void _WykonajTest(const unsigned int Ilosc_Pow);
 //****************************************************************************************
 /*!
  *\bfief Metoda generujaca dane
@@ -81,7 +78,7 @@ public:
  *\param[in] n - Ilosc wygenerowanych danych
  */
 //****************************************************************************************
-  void _Generator(string PlikOut,int n)const;
+  void _Generator()const;
 //****************************************************************************************
 
 };
