@@ -31,7 +31,6 @@ void BenchmarkInterfejs:: _WykonajTest(const unsigned int Ilosc_Pow)
 	 Wynik += (((Koniec - Start)/ (double)
 		    (CLOCKS_PER_SEC / 1000)))/Tablica_Rozmiarow[i];
        }
-      this -> _IleKolizja();
       cout << Wynik/Ilosc_Pow << endl;
    }
 }
@@ -62,7 +61,7 @@ void BenchmarkInterfejs:: _Generator()const
 	{
 	  Klucz.clear();
 	  for( int i = 0 ; i < DLUGOSC_SLOWA; ++i)
-	    Klucz+= ('A' + rand() % 60);
+	    Klucz+= ('a' + rand() % 25);
 	  Klucze << Klucz << ' ';
 	}
     }

@@ -12,7 +12,6 @@ using namespace std;
 //***********************************************************************************
 TablicaHash::TablicaHash()
 {
-  K = 0;
   for(int i = 0; i < ROZMIAR; ++i)
     _Tab[i] = NULL;
 }
@@ -25,11 +24,11 @@ TablicaHash::~TablicaHash()
 //***********************************************************************************
 unsigned int TablicaHash::_Haszuj(const string Klucz) const 
 {
-  unsigned int suma = 5381;
+  unsigned int suma = Klucz[0];
   for(unsigned int i = 0; i < Klucz.size(); ++i)
-    suma = ((suma <<5) +suma) +Klucz[i];
+    suma = ((suma <<4)) +Klucz[i];
   return suma % ROZMIAR;
-}
+ }
 //***********************************************************************************
 Element TablicaHash::_Stworz_Rekord(const int Data,const string Klucz)
 {
@@ -65,7 +64,7 @@ int& TablicaHash::_Dodaj(const string &Klucz)
   else
     {
       _Tab[Index] -> _Push(Para);
-      while(Klucz != (_Tab[Index] -> _Wartosc(i)._Klucz)){ i++; _Kolizja();}
+      while(Klucz != (_Tab[Index] -> _Wartosc(i)._Klucz)) i++;
       return _Tab[Index] -> _Adres(i)._Wartosc;
     }
   cerr << "Blad! Nie znalezniona odpowiedniego rekordu dla podanego klucza!"
@@ -92,9 +91,4 @@ const int TablicaHash::_Zwroc(const string &Klucz) const
   cerr << "Blad! Nie znalezniono odpowiedniego rekordu dla podanego klucza!"
        << endl; exit(1);
 }
-//***********************************************************************************
-void TablicaHash:: _Kolizja() {K++;}
-//***********************************************************************************
-void TablicaHash::IloscKolizji()
-{std::cout << "Ilosc Kolizji: " << K << std::endl;}
 //***********************************************************************************

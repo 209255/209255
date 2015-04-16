@@ -1,6 +1,6 @@
 #ifndef BENCHMARKINTERFEJS_HH
 #define BENCHMARKINTERFEJS_HH
-#define DLUGOSC_SLOWA 10
+#define DLUGOSC_SLOWA 5
 #define ILOSC 1000000
 
 #include <iostream>
@@ -52,8 +52,8 @@ protected:
 //****************************************************************************************
   virtual void _Zaladuj(const unsigned int n)const = 0;
 //****************************************************************************************
-  virtual void _IleKolizja() = 0;
-//****************************************************************************************
+
+ 
 public:
 
 //****************************************************************************************

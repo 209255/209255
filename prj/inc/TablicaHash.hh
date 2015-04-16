@@ -1,6 +1,6 @@
 #ifndef TABLICAHASH_HH
 #define TABLICAHASH_HH
-#define ROZMIAR 224729
+#define ROZMIAR 1000033
 #include<iostream>
 #include<cstring>
 #include <sstream>
@@ -35,26 +35,9 @@ private:
 //********************************************************************************
   StosTab<Element> *_Tab[ROZMIAR];
 //********************************************************************************
-/*!
- *\brief Pole Klasy TablicaHash
- *
- * Pole to przechowuje informajce o ilosci kolizji jakie wystapiły podczas
- * dodawania rekordow do tablicy
- */
-//********************************************************************************
-  int K;
-//********************************************************************************
+
 protected:
 
-//********************************************************************************
-  /*!
-   *\bried Metoda Kolizja
-   *
-   * Metoda ma za zadanie zwiekszyc wartosc przechowujaca w polu K,
-   * Wywolywana jest w przypadku wystapienia kolizji
-   */
-//********************************************************************************
-  void _Kolizja();
 //********************************************************************************
   /*!
    *\brief Funkcja Haszujaca
@@ -151,17 +134,6 @@ protected:
   int & _Dodaj(const std::string& Klucz);
 //********************************************************************************
 
-public:
-
-//********************************************************************************
-  /*!
-   *\brief Wyswietla ilosc kolizji
-   * 
-   * Metoda ma za zadanie wyswietlic ilosc wystapien kolizji 
-   */
-//********************************************************************************
-  void IloscKolizji();
-//********************************************************************************
 };
 ////////////////////////////////KONIEC DEFINICJI KLASY///////////////////////////
 #endif
