@@ -1,0 +1,129 @@
+\documentclass[12pt,a4paper,titlepage]{article}
+\usepackage[T1]{fontenc}
+\usepackage[polish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{graphicx}
+\selectlanguage{polish}
+\setlength{\parindent}{5mm} %ustawi rozmiar wcie˛cia na pocza˛tku kaz˙dego akapitu na 0mm,
+\setlength{\parskip}{4mm} %
+\title{Sprawozdanie z ćwiczenia laboratoryjnego V\newline Tablica Asocjacyjna}
+\date{17.04.2015}
+\author{Bartłomiej Ankowski}
+\begin{document}
+\maketitle
+\pagestyle{empty}
+%\pagestyle{headings}
+\tableofcontents
+\section{Wstęp}
+Celem zadania było zamodelowanie i zaimplementowanie tablicy asocjacyjnej, opartej na bazie tablicy
+mieszającej, oraz przedyskutowanie złożoności obliczeniowej operacji odczytu danych dla podanego klucza.
+\section{Realizacja}
+Tablica Asocjacyjna jest strukturą danych przechowująca Pary(Unikatowy klucz oraz Wartość) i umożliwa dostęp do wartości poprzez podanie Klucza.
+Została ona zrealzowana na bazie tablicy mieszające, która wykorzystuję funkcję haszującą do wyliczenia
+ideksu dla unikatowego klucza.Tablca mieszająca została zrealizowana przy pomocy struktury danych przygotowanej na poprzednich laboratoriach.Użyty został Stos tablicowy, pracujący na stworzenej strukturze Element, na którą składa się łańcuch znakowy oraz liczba całkowita.Tablica mieszająca zawiera pole, na które składa się tablica wskaźników na Stos tablicowy.
+Kluczowa dla tej realizacji jest funkcja haszująca, której algorytm jest oparty na dodawaniu do siebie kolejnych znaków klucza.W celu zmniejszenia prawdopodobieństwa wystąpienia kolizji, przed każdym dodawaniem
+aktualna wartość jest poddawana przesunięciu bitowemu <<.
+W celu uniknięcia otrzymania indeksu większego, niż rozmiar statycznej tablicy mieszającej,otrzymaną sumę 
+poddajemy operacji dzielenia z resztą przez rozmiar tablicy. Ważne przy tym jest, aby rozmiar tablicy był liczbą pierwszą, pozwala to uniknąć zbyt częstego otrzymywania zerowego indeksu jako wynik haszowania.
+\section{Występowanie kolizji}
+Idealna funkcja haszująca nie jest możliwa to zrealizowania,nie możliwe jest uzyskanie różnowartościowej funkcji w każdym przypadku.Fakt ten prowadzi do powstawanie kolizji, czyli sytulacji w której dla dwóch kluczy przypisywany ten sam indeks.
+W takim przypadku może dojść do próby zapisania danych w miejscu, gdzie już zostały zapisane informację.
+W przypadku realizacji tablicy haszującej istnieje kilka sposobów na rozwiązanie tego problemu.
+W pierwszej kolejności nalezy się jednak skupić na jak najlepszym skonfigurowaniu funkcji haszującej, tak aby przedział losowanych liczby był jak najszerszy. Drugim sposobem jest umieszczenie danych w innym miejscu niż wskazywałby na to wynik haszowania.
+Nalezy przy tym zachować określony porządek, tak aby była możliwość prawidłowego odczytania zapisanych danych.
+Przykładowe metody to:
+\begin{itemize}
+\item Metoda łancuchowa - W przypadku kolizji dane są umieszczane nie bezpośrednio w tablicy, lecz na liście związanej z danym indeksem.
+\item Adresowanie otwarte - Nowy element jest ustawiany w innym miejscy niż wynika to z funkcji haszującej.
+Lokalizacja jest określana przez dodanie wartości tzw. funkcji przyrostu $p(i)$.
+\item Współczynnik wypełnienia - Podczas pracy rozmiar tablicy jest  korygowany w przypadku wysokego współczynnika wypełnienia.
+\item Haszowanie kukułcze - Dane są umieszczane  w drugiej tablicy, na miejscu wyznaczonym przez drugą funkcje haszująca.
+\end{itemize}
+\section{Złożoność obliczeniowa}
+W tym przypadku realizacji wybrano metodę łańcuchową(linkowania).
+W przypadku wystąpienia kolizji, wartość jest dodawana na koniec stosu, utworzonego dynamicznie na odpowiednim indeksie tablicy mieszającej.
+W pesymistycznym przypadku złożoność wyosi $O(n)$ i występuje w przypadku, gdy funkcja haszująca zwróci ten sam indeks dla różnych kluczy, czyli wystapi kolizja.Może to doprowadzić do sytuacji, gdy szukany przez nas element trafi na sam koniec stosu ,znajdującego sie pod danym indeksem tablicy mieszającej.
+Zatem chcąc odczytać element będacy na końcu danego stosu występuje konieczność sprawdzania zgodonosci klucza każdego z elementów z kluczem poszukiwanym, co znacznie wydłuża czas odczytu.
+\subsection{Przypadek $O(n)$} 
+Zakładając, że średni czas odczytu wyraża się wzorem $T(n) = a\cdot n$,\newline
+gdzie $a$ - czas pojedyńczego odczytu.\newline
+W przypadku, gdy szukany przez nas element znajduję się na $n-tym$ miejscu danego stosu, czyli wystąpiło $n$ kolizji.\newline Trzeba zatem wykonac $n$ porównań kluczy, aby znaleźć wartość pasująca do klucza poszukiwanego.\newline
+Implikując złożoność obliczeniowa przypadku pesymistycznego wynosi $O(n)$.
+\subsection{Przydanek $O(1)$} 
+Zakładając, że średni czas odczytu wyraża się wzorem $T(n) = a\cdot n$,\newline
+gdzie $a$ - czas pojedyńczego odczytu.\newline
+W przypadku, gdy szukany przez na element jest na pierwszym miejscu stosu,czyli nie wystąpiła do tej pory żadna kolizja, związana z danym indeksem.\newline
+Trzeba zatem wykonać $n=1$ porównań kluczy, aby znaleźć wartość pasująca do klucza poszukiwanego.\newline
+Wzór sprowada się do postaci $T(n) = a$, co składa się na złożoność $O(1)$.
+
+Analogicznie wygląda sytuacja przy próbie zapisu wartości.
+
+\section{Wyniki pomiarów}
+Testy zostały przeprowadzone dla dwóch przypadków.
+W pierwszym rozmiar tablicy mieszającej wynosił 1000033, w drugim wynosił 1.\newline
+Testy polegały na pomiarze czasu całkowitego odczytu pewnej ilości danych, czas ten był dzielony przez ilość danych, co ukazywało średni czas pojedynczego odczytu dla określonej porcji danych.\newline
+Dla każdej ilości danych test był wykonywalny 10 krotnie.
+\subsection{Przypadek $O(1)$}
+Wyniki otrzymane dla Rozmiaru tablicy mieszającej równego 1000033:
+\begin{table}[h]
+\begin{center}
+\begin{tabular}{|l|l|}
+\hline
+Ilość danych[n] &Czas[ms]   \\ \hline
+100 & 0,000102 \\ \hline
+1000 & 0,000092 \\ \hline
+10000 &0,000129 \\ \hline
+100000 & 0,000188 \\ \hline
+1000000 & 0,000321 \\ \hline
+\end{tabular}
+\caption{Przypadek O(n)}
+\end{center}
+\end{table}
+%\newpage
+\begin{figure}[!htbp]
+%\begin{center}
+\includegraphics[scale=0.4]{1.png}
+\caption{Przypadek O(1)}
+%\end{center}
+\end{figure}
+
+\subsection{Przypadek $O(n)$}
+Wyniki otrzymane dla Rozmiaru tablicy mieszającej równego 1
+\begin{table}[h]
+\begin{center}
+\begin{tabular}{|l|l|}
+\hline
+Ilość danych[n] &Czas[ms]  \\ \hline
+1 & 0,00050 \\ \hline
+10 &0,00036  \\ \hline
+50 & 0,00118 \\ \hline
+100 & 0,00271  \\ \hline
+500 &0,01214 \\ \hline
+1000 & 0,02796  \\ \hline
+5000 &0,12061  \\ \hline
+10000 & 0,28304  \\ \hline
+\end{tabular}
+\end{center}
+\caption{Przypadek O(n)}
+\end{table}
+%\newpage
+\begin{figure}[!htbp]
+%\begin{le}
+\includegraphics[scale=0.4]{n1.png}
+\caption{Przypadek O(n)}
+%\end{center}
+\end{figure}
+
+
+\section{Wnioski}
+\begin{itemize}
+\item Tablica Asocjacyjna zapewnia bardzo szybki dostęp do potrzebnych danych przy pomocy użycia Klucza.
+Może być wykorzystywana przy modelowaniu programów pracujących jako słownik, książka telefoniczna czy każdej innej bazy danych.
+\item Wyniki, jakie otrzmano podczas testowania struktury, są zgodne z oczekiwaniami.\newline
+Minimalny wzrost czasu pojedynczego odczytu w przypadku złożoności $O(1)$ wiąże się z pewnością z faktem wzrostu prawdopodobieśtwa wystąpienia kolizji przy dodawaniu coraz większej ilości danych.
+Testowanie przypadku, gdy rozmiar tablicy haszującej wynosi 1, dało wynik zgodny z teoretycznym.
+\item Kluczowe dla wzrostu wydajności programu (skrócenia czasu pojedyńczego odczytu) ma prawidłowe skonfigurowanie funkcji haszującej.\newline
+W przypadku testów nad tą implementacją, drobne zmiany w tej funkcji zapewniły 2-krotny spadek czasu średniego odczytu w przypadku testów, dla ilości danych równych 1 mln. 
+\end{itemize}
+\end{document}

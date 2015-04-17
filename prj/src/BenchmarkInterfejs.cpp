@@ -15,12 +15,12 @@ using namespace std;
 void BenchmarkInterfejs:: _WykonajTest(const unsigned int Ilosc_Pow)
 {
   double Wynik = 0;
-  const unsigned int Tablica_Rozmiarow[] = {10,100,1000,10000,100000,1000000};
- 
+  const unsigned int Tablica_Rozmiarow[] = {100,1000,10000,100000,1000000};
+  
    for (unsigned int i = 0; i < ( sizeof(Tablica_Rozmiarow) / sizeof(unsigned int) ); ++i)
      {
-       this -> _Zaladuj(Tablica_Rozmiarow[i]);
        Wynik = 0;
+       this -> _Zaladuj(Tablica_Rozmiarow[i]);
        cout << "Pracuje nad " << Tablica_Rozmiarow[i] 
 	    << " Danych : "   << endl;
       for(unsigned int j = 0; j < Ilosc_Pow; ++j)

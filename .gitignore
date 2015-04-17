@@ -31,7 +31,6 @@
 #*# 
 *.o 
 prj/dane.txt 
-*.tex
 *.eps
 *.sty
 *.log

@@ -56,6 +56,7 @@ private:
      _RozmiarL = 0;
   }
 //****************************************************************************************
+
 public:
 
 //****************************************************************************************
@@ -191,7 +192,7 @@ public:
   unsigned int _Rozmiar() const{return _RozmiarL;}
 //****************************************************************************************
 
-  Typ _Wartosc(unsigned int Index)const {return _L[Index];}
+  const Typ _Wartosc(unsigned int Index)const {return _L[Index];}
   Typ &_Adres(unsigned int Index) {return _L[Index];}
 };
 #endif

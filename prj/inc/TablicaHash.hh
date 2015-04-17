@@ -1,6 +1,7 @@
 #ifndef TABLICAHASH_HH
 #define TABLICAHASH_HH
 #define ROZMIAR 1000033
+//#define ROZMIAR 1
 #include<iostream>
 #include<cstring>
 #include <sstream>
@@ -53,7 +54,7 @@ protected:
    *\return Indeks tablicy, odpowiedni dla danego klucza
    */
 //********************************************************************************
-  unsigned int _Haszuj(const std::string Klucz) const;
+  const unsigned int _Haszuj(const std::string Klucz) const;
 //********************************************************************************
   /*!
    *\brief Metoda kasujaca

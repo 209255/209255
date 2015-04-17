@@ -22,11 +22,11 @@ TablicaHash::~TablicaHash()
     delete _Tab[i];
 }
 //***********************************************************************************
-unsigned int TablicaHash::_Haszuj(const string Klucz) const 
+const unsigned int TablicaHash::_Haszuj(const string Klucz) const 
 {
   unsigned int suma = Klucz[0];
   for(unsigned int i = 0; i < Klucz.size(); ++i)
-    suma = ((suma <<4)) +Klucz[i];
+    suma = ((suma << 5)) + Klucz[i];
   return suma % ROZMIAR;
  }
 //***********************************************************************************
@@ -67,7 +67,7 @@ int& TablicaHash::_Dodaj(const string &Klucz)
       while(Klucz != (_Tab[Index] -> _Wartosc(i)._Klucz)) i++;
       return _Tab[Index] -> _Adres(i)._Wartosc;
     }
-  cerr << "Blad! Nie znalezniona odpowiedniego rekordu dla podanego klucza!"
+  cerr << "Blad! Nie znalezniono odpowiedniego rekordu dla podanego klucza!"
        << endl; exit(1);
 }
 //***********************************************************************************
