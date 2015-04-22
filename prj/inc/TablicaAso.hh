@@ -53,7 +53,7 @@ public:
  * Metoda ma za zadanie usunac cala bierzaca zawartosc tablicy
  */
 //********************************************************************************
-  void Usun_wszystkie();
+  void Zwolnij();
 //********************************************************************************
 
 };

@@ -76,11 +76,12 @@ public:
 /*!
  *\brief Metoda zwalniajaca pamiec
  *
- *Metoda ma za zadanie zwolnic pamiec uzywana przy zapelnienianiu danej struktry danymi
+ * Metoda ma za zadanie zwolnic pamiec uzywana przy zapelnienianiu 
+ * danej struktry danymi
  */
 //***********************************************************************************
   virtual void _Zwolnij() = 0;
 //***********************************************************************************
-//  virtual void Sortuj(int,int) = 0;
-  };
+
+};
 #endif

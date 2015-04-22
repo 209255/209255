@@ -20,19 +20,21 @@ void BenchmarkInterfejs:: _WykonajTest(const unsigned int Ilosc_Pow)
    for (unsigned int i = 0; i < ( sizeof(Tablica_Rozmiarow) / sizeof(unsigned int) ); ++i)
      {
        Wynik = 0;
-       this -> _Zaladuj(Tablica_Rozmiarow[i]);
        cout << "Pracuje nad " << Tablica_Rozmiarow[i] 
 	    << " Danych : "   << endl;
-      for(unsigned int j = 0; j < Ilosc_Pow; ++j)
-       {
-	 clock_t Start = clock();
-	 this -> _Test(Tablica_Rozmiarow[i]);
-	 clock_t Koniec = clock();
-	 Wynik += (((Koniec - Start)/ (double)
-		    (CLOCKS_PER_SEC / 1000)))/Tablica_Rozmiarow[i];
-       }
-      cout << Wynik/Ilosc_Pow << endl;
-   }
+     
+       for(unsigned int j = 0; j < Ilosc_Pow; ++j)
+	 {
+	   this -> _Zaladuj(Tablica_Rozmiarow[i]);
+	   clock_t Start = clock();
+	   this -> _Test(Tablica_Rozmiarow[i]);
+	   clock_t Koniec = clock();
+	   Wynik += (((Koniec - Start)/ (double)
+		      (CLOCKS_PER_SEC / 1000)))/Tablica_Rozmiarow[i];
+	   this -> _Zwolnij();
+	 }
+       cout << Wynik/Ilosc_Pow << endl;
+     }
 }
 //*******************************************************************************
 void BenchmarkInterfejs:: _Generator()const

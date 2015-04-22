@@ -8,14 +8,14 @@
  *\file Definicja Klasy ListaTab
  *
  * Plik zawiera definicje klasy StosTab,zaimplementowana w sposob tablicowy,realizujacy 
- * realokacje dynamicznej tablicy do 200% poprzedniego rozmiaru w momencie dodawania elementu od niej.
+ * realokacje dynamicznej tablicy do 200% poprzedniego rozmiaru w momencie dodawania 
+ * elementu od niej.
  * Jest to klasa klasa pochodna od Struktury, naglowke zawiera deklaracje metod 
  */
 //****************************************************************************************
 template<class Typ>
 class StosTab : public Struktury<Typ>
 {
-private:
 //****************************************************************************************
 /*!
  *\brief Pole klasy StosTab
@@ -41,11 +41,15 @@ private:
 //****************************************************************************************
   unsigned int _RozmiarT;	
 //****************************************************************************************
+
+
+public:
+//****************************************************************************************
 /*!
  *\brie Metoda zwalniajaca pamiec
  *
- *Metoda ma za zadanie zwolnij pamiec zajmowana przez dane, dopoki ilosc elementow listy nie wynosi
- * 0 wykonywana jest metoda _Pop, aby oproznic stos i zwolnic pamiec
+ *Metoda ma za zadanie zwolnij pamiec zajmowana przez dane, dopoki ilosc elementow 
+ * listy nie wynosi 0 wykonywana jest metoda _Pop, aby oproznic stos i zwolnic pamiec
  */
 //****************************************************************************************
   void _Zwolnij()
@@ -55,10 +59,6 @@ private:
      _L = new Typ[_RozmiarT];
      _RozmiarL = 0;
   }
-//****************************************************************************************
-
-public:
-
 //****************************************************************************************
 /*!
  *\brief Konstruktor
@@ -191,8 +191,9 @@ public:
 //****************************************************************************************
   unsigned int _Rozmiar() const{return _RozmiarL;}
 //****************************************************************************************
-
   const Typ _Wartosc(unsigned int Index)const {return _L[Index];}
+//****************************************************************************************
   Typ &_Adres(unsigned int Index) {return _L[Index];}
+//****************************************************************************************
 };
 #endif

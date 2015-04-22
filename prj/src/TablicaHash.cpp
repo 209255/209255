@@ -1,14 +1,13 @@
 #include "TablicaHash.hh"
 
 using namespace std;
-
-
-//************************************************************************************************
+//************************************************************************************
 /*!
  *\file 
  *\brief Definicje Metod klasy TablicaHash
  */
-//************************************************************************************************
+//***********************************************************************************
+
 //***********************************************************************************
 TablicaHash::TablicaHash()
 {
@@ -28,6 +27,7 @@ const unsigned int TablicaHash::_Haszuj(const string Klucz) const
   for(unsigned int i = 0; i < Klucz.size(); ++i)
     suma = ((suma << 5)) + Klucz[i];
   return suma % ROZMIAR;
+ 
  }
 //***********************************************************************************
 Element TablicaHash::_Stworz_Rekord(const int Data,const string Klucz)
@@ -52,8 +52,8 @@ int& TablicaHash::_Dodaj(const string &Klucz)
 {
   const Element Para = _Stworz_Rekord(0,Klucz);
   const unsigned int Index = _Haszuj(Klucz);
-  //cout << "Index: " << Index << endl;
   int i = 0;
+  
   if(!(_Tab[Index]))
     {
       _Tab[Index] = new StosTab<Element>;
@@ -62,33 +62,40 @@ int& TablicaHash::_Dodaj(const string &Klucz)
     }
   
   else
-    {
+  {
       _Tab[Index] -> _Push(Para);
       while(Klucz != (_Tab[Index] -> _Wartosc(i)._Klucz)) i++;
       return _Tab[Index] -> _Adres(i)._Wartosc;
-    }
+  }
   cerr << "Blad! Nie znalezniono odpowiedniego rekordu dla podanego klucza!"
        << endl; exit(1);
 }
-//***********************************************************************************
+//**********************************************************************************
 const int TablicaHash::_Zwroc(const string &Klucz) const
 {
-  
   const unsigned int index = _Haszuj(Klucz);
   if(!_Tab[index]){
       cerr << "Blad!Brak odpowiedniego rekordu!"
 	   << endl; exit(1);}
   else
     {
-      const unsigned int Rozmiar = _Tab[index] -> _Rozmiar();
-      for(unsigned int i = 0; i < Rozmiar; ++i)
+      const unsigned int k = _Tab[index] -> _Rozmiar();
+      for(unsigned int i = 0; i < k; ++i)
 	{
-	  if(Klucz == (_Tab[index] -> _Wartosc(i))._Klucz) 
+	  if(Klucz == _Tab[index] -> _Wartosc(i)._Klucz) 
 	    return _Tab[index] -> _Wartosc(i)._Wartosc;
-	  
 	}
     }
-  cerr << "Blad! Nie znalezniono odpowiedniego rekordu dla podanego klucza!"
+  cerr << "Blad! Nie znalezniono odpowiedniego rekordu dla podanego klucza !"
        << endl; exit(1);
+}
+//***********************************************************************************
+void TablicaHash::Zwolnij_t()
+{
+  for(int i = 0; i < ROZMIAR; ++i)
+    {
+      if(_Tab[i])
+	_Tab[i] -> _Zwolnij();
+    }
 }
 //***********************************************************************************
