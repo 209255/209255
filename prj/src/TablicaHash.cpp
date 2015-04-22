@@ -25,7 +25,7 @@ const unsigned int TablicaHash::_Haszuj(const string Klucz) const
 {
   unsigned int suma = Klucz[0];
   for(unsigned int i = 0; i < Klucz.size(); ++i)
-    suma = ((suma << 5)) + Klucz[i];
+    suma = ((suma << 5) + suma + Klucz[i]);
   return suma % ROZMIAR;
  
  }

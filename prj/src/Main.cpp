@@ -12,7 +12,7 @@ int main(int argc,char *argv[])
   TablicaAso O;
   StrukturyBenchmark S;
   S._Ustaw(O);
-  //S._Generator();
+  S._Generator();
   S._Wczytaj("Dane.dat","Klucze.dat");
   S._WykonajTest(ILOSC_POW);
  
