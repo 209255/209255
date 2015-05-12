@@ -1,10 +1,10 @@
 #
 #  To sa opcje dla kompilacji
 #
-CPPFLAGS= -c -g -Iinc -Wall -pedantic -std=c++11
+CPPFLAGS= -c -g -Iinc -Wall -pedantic 
 
 
-Struktury: obj/BenchmarkInterfejs.o obj/StrukturyBenchmark.o obj/TablicaHash.o obj/TablicaAso.o  obj/Main.o
+Struktury: obj/StrukturyBenchmark.o obj/Czasomierz.o obj/Wyniki.o obj/TablicaHash.o obj/TablicaAso.o obj/Main.o
 	g++ -Wall -pedantic -o Struktury obj/*.o
 
 obj:
@@ -14,8 +14,10 @@ obj/Main.o: src/Main.cpp inc/*.hh
 	g++ ${CPPFLAGS} -o obj/Main.o src/Main.cpp
 obj/StrukturyBenchmark.o: src/StrukturyBenchmark.cpp inc/StrukturyBenchmark.hh
 	g++ ${CPPFLAGS} -o obj/StrukturyBenchmark.o src/StrukturyBenchmark.cpp
-obj/BenchmarkInterfejs.o : src/BenchmarkInterfejs.cpp inc/BenchmarkInterfejs.hh
-	g++ ${CPPFLAGS} -o obj/BenchmarkInterfejs.o src/BenchmarkInterfejs.cpp
+obj/Wyniki.o: src/Wyniki.cpp inc/Wyniki.hh
+	g++ ${CPPFLAGS} -o obj/Wyniki.o src/Wyniki.cpp
+obj/Czasomierz.o: src/Czasomierz.cpp inc/Czasomierz.hh
+	g++ ${CPPFLAGS} -o obj/Czasomierz.o src/Czasomierz.cpp
 obj/TablicaHash.o: src/TablicaHash.cpp inc/TablicaHash.hh
 	g++ ${CPPFLAGS} -o obj/TablicaHash.o src/TablicaHash.cpp
 obj/TablicaAso.o: src/TablicaAso.cpp inc/TablicaAso.hh

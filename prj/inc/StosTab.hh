@@ -13,6 +13,8 @@
  * Jest to klasa klasa pochodna od Struktury, naglowke zawiera deklaracje metod 
  */
 //****************************************************************************************
+
+//////////////////////////////////DEFINICJA KLASY/////////////////////////////////////////
 template<class Typ>
 class StosTab : public Struktury<Typ>
 {
@@ -44,6 +46,7 @@ class StosTab : public Struktury<Typ>
 
 
 public:
+
 //****************************************************************************************
 /*!
  *\brie Metoda zwalniajaca pamiec
@@ -55,7 +58,7 @@ public:
   void _Zwolnij()
   {
      delete[] _L;
-     _RozmiarT=1;
+     _RozmiarT = 1;
      _L = new Typ[_RozmiarT];
      _RozmiarL = 0;
   }

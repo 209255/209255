@@ -2,6 +2,7 @@
 #define BENCHMARKINTERFEJS_HH
 #define DLUGOSC_SLOWA 5
 #define ILOSC 1000000
+#include "Obserwator.hh"
 #include <iostream>
 #include <cstdlib>
 #include <fstream>
@@ -27,8 +28,6 @@ using namespace std;
  *Klasa bazowa dla implementowania benchmarku dla kolejnych struktur danych
  */
 //****************************************************************************************
-
-////////////////////////////////DEFINICJA KLASY//////////////////////////////////////////
 
 class BenchmarkInterfejs
 {
@@ -56,6 +55,35 @@ protected:
 //****************************************************************************************
   virtual void _Zwolnij() = 0;
 //****************************************************************************************
+  
+ 
+public:
+
+//****************************************************************************************
+/*!
+ *\brief Metoda wykonujaca test odpowiedniej struktury
+ *
+ * Metoda ma za zadanie wykonac Benchmark dla struktury, dla ustawionej ilosci danych 
+ * i okreslona przez argument metody ilosc powtorzen.
+ *\param[in] Ilosc_Pow - okresla ile razy ma sie wykonac test
+ */
+//****************************************************************************************
+  void _WykonajTest(const unsigned int Ilosc_Pow);
+//****************************************************************************************
+/*!
+ *\bfief Metoda generujaca dane
+ * 
+ * Metoda ma za zadanie wygenerowac plik z danymi z przedzialu (1-99),
+ * jest wywolywana gdy uzytkownik nie poda w argmumencie wywolania programu
+ * nazwy pliku wejsciowego z danymi
+ *
+ *\param[in] PlikOut - Nazwa plik w ktorym zapisywane sa wygenerowane dane 
+ *\param[in] n - Ilosc wygenerowanych danych
+ */
+//****************************************************************************************
+  void _Generator()const;
+//****************************************************************************************
+ 
 };
-////////////////////////////////KONIEC DEFINICJi/////////////////////////////////////////
+
 #endif
