@@ -2,7 +2,7 @@
 #define STOSTAB_HH
 #include <cstdlib>
 #include <iostream>
-#include "Struktury.hh"
+#include "IStruktury.hh"
 //****************************************************************************************
 /*!
  *\file Definicja Klasy ListaTab

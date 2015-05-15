@@ -60,7 +60,7 @@ void Wyniki::_ZapiszWyniki(std::string NazwaPlikWy)const
       if(LicznikPowt ==  _IloscPowtorzen)
 	{
 	  _TablicaWynikow[LicznikProb] =  (Stoper._CzasTrwania()
-	  /_TablicaRozmiarow[LicznikProb])/_IloscPowtorzen;
+					   /_IloscPowtorzen);
 	  LicznikProb++;
 	  LicznikPowt = 0;
 	  Stoper._Reset();

@@ -1,7 +1,6 @@
 #ifndef BENCHMARKINTERFEJS_HH
 #define BENCHMARKINTERFEJS_HH
 #define DLUGOSC_SLOWA 5
-#define ILOSC 1000000
 #include <iostream>
 #include <cstdlib>
 #include <fstream>
@@ -50,11 +49,13 @@ protected:
  *\param[in] n - liczba wczytywanych danych 
  */
 //****************************************************************************************
-  virtual void _Wczytaj(string PlikWart,string PlikKlucz) = 0;
+  virtual void _Wczytaj(string PlikWart) = 0;
 //****************************************************************************************
   virtual void _Zaladuj(const unsigned int n)const = 0;
 //****************************************************************************************
   virtual void _Zwolnij() = 0;
+//****************************************************************************************
+  virtual void _Generator()const = 0;
 //****************************************************************************************
 };
 ////////////////////////////////KONIEC DEFINICJi/////////////////////////////////////////

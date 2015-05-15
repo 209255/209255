@@ -1,5 +1,5 @@
-#ifndef INTERFEJS_HH
-#define INTERFEJS_HH
+#ifndef STRUKTURY_HH
+#define STRUKTURY_HH
 #include <iostream>
 #include <cstring>
 #include <sstream>
