@@ -9,8 +9,20 @@ struct Wezel
   Wezel *_Rodzic; 
   Wezel *_Lewy;
   Wezel *_Prawy;
-  Wezel(): _Lewy(NULL), _Prawy(NULL),_Rodzic(NULL) {};
-  Wezel(Typ W): _Wartosc(W), _Lewy(NULL), _Prawy(NULL),_Rodzic(NULL) {};
+  Wezel()
+  {
+    _Lewy =_Prawy = _Rodzic =  NULL; 
+  }
+  Wezel(Typ W)
+  {
+    _Wartosc = W;
+    _Lewy =_Prawy = _Rodzic =  NULL; 
+  }
+  virtual ~Wezel()
+  {
+    delete _Rodzic; delete _Lewy; delete _Prawy;
+    _Rodzic = _Lewy = _Prawy = NULL;
+  }
 };
 
 

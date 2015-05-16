@@ -21,7 +21,7 @@
 
 ////////////////////////////////DEFINICJA KLASY//////////////////////////////////////////
 template<class Typ>
-class StrukturyBenchmark: public BenchmarkInterfejs, IObserwowany
+class StrukturyBenchmark: public BenchmarkInterfejs,public IObserwowany
 {
 
 private:
@@ -69,21 +69,60 @@ private:
  * \param[in] n - ilosc danych ktora zapelnona struktura 
  */
 //****************************************************************************************
-  void _Test(const unsigned int n) const;
+  void _Test(const unsigned int n) const
+  {
+    for(unsigned int i = 0; i < n; ++i) 
+      ;
+  }
 //****************************************************************************************
-  void _Zaladuj(const unsigned int n) const; 
+  void _Zaladuj(const unsigned int n) const
+ {
+    for(unsigned int i = 0; i < n; ++i)
+      ;
+  }
 //**************************************************************************************** 
-  //void _Zwolnij(){W -> Zwolnij();}
+  void _Zwolnij(){;}
 //****************************************************************************************
-  void _PowiadomObserwatorow();
+  void _PowiadomObserwatorow()
+{
+  std::list<IObserwator *>::iterator it;
+  for(it = Obserwatorzy.begin(); it != Obserwatorzy.end(); ++it)
+    (*it) -> _Aktualizuj();
+}
 //****************************************************************************************
 
 public:
 //****************************************************************************************
   StrukturyBenchmark(unsigned int Proby,unsigned int Powt,
-		     unsigned int *Rozmiary);
+		     unsigned int *Rozmiary)
+{
+  _IloscProb = Proby;
+  _IloscPowt = Powt;
+  _TablicaRozmiarow = new unsigned int[_IloscProb];
+  _IloscDanych = Rozmiary[_IloscProb-1];
+  _Wartosci = new int[_IloscDanych];
+  
+  for(unsigned int i = 0; i < _IloscProb; ++i){
+    _TablicaRozmiarow[i] = Rozmiary[i];}
+  
+  for (unsigned int i = 0; i < _IloscDanych; ++i){
+	_Wartosci[i] = 0;}
+}
 //****************************************************************************************
-  void _WykonajTest();
+  void _WykonajTest()
+{
+  for (unsigned int i = 0; i < _IloscProb; ++i)
+    {
+      for(unsigned int j = 0; j < _IloscPowt; ++j)
+	{
+	  this -> _Zaladuj(_TablicaRozmiarow[i]);
+	  this -> _PowiadomObserwatorow();
+	  this -> _Test(_TablicaRozmiarow[i]);
+	  this -> _PowiadomObserwatorow();
+	  this -> _Zwolnij();
+	}
+    }
+}
 //****************************************************************************************
   // void _Ustaw(TablicaAso &A){W = &A;}
 //****************************************************************************************
@@ -96,13 +135,59 @@ public:
  *\param[in] Ilosc - Ilosc danych jaka bedzie wczytywana
  */
 //****************************************************************************************
-  void _Wczytaj(string PlikWart);
+  void _Wczytaj(string PlikWart)
+{
+    ifstream Plik_Wart;
+    Typ Temp;
+    Plik_Wart.open(PlikWart.c_str(),ios::in);
+
+    if(!Plik_Wart )
+      {
+      std::cerr << "Blad przy otwieraniu Pliku: " 
+		<< std::endl;exit(1);
+      }
+    else
+      {
+	for(unsigned int i = 0;i < _IloscDanych ; ++i)
+	  {
+	    Plik_Wart >> Temp;
+	    if(Plik_Wart.eof())
+	      {
+		std::cout << "Napotkany EOF przed wczytaniem wszytskich danych"
+			  << std::endl;
+	      }
+	    _Wartosci[i] = Temp;
+	  }
+      }
+   }
 //****************************************************************************************
-  void _DodajObserwator(IObserwator *O);
+  void _DodajObserwator(IObserwator *O)
+{
+  Obserwatorzy.push_back(O);
+}
 //****************************************************************************************
-  void _UsunObserwator(IObserwator *O);
+  void _UsunObserwator(IObserwator *O)
+{
+  Obserwatorzy.remove(O);
+}
 //****************************************************************************************
-  void _Generator()const;
+  void _Generator()const
+{
+  fstream PlikWy;
+  srand(time (NULL));
+
+  PlikWy.open("Dane.dat",ios::out);
+  if(PlikWy.good())
+    {
+      for(unsigned int i = 0 ; i < _IloscDanych; ++i)
+	PlikWy << rand() % 100 << endl;
+    }
+  else
+    {
+      cerr << "Blad utworzenia pliku!" << endl; exit(1);
+    }
+  PlikWy.close();
+}
 //****************************************************************************************
 };
 ////////////////////////////////KONIEC DEFINICJI//////////////////////////////////////////
