@@ -1,14 +1,17 @@
 #ifndef DRZEWOBIN_HH
 #define DRZEWOBIN_HH
 #include "Wezel.hh"
+
+///////////////////////////DEFINICJA KLASY//////////////////////////////////
 template<class Typ>
 class DrzewoBin:public IDrzewo<Typ>
 {
 private:
-
+//**************************************************************************
   Wezel<Typ> * _Korzen;
+//**************************************************************************
   unsigned int _LiczbaWezlow;
-
+//**************************************************************************
   void DodajGalaz(Wezel<Typ> *&W,const Typ n)
   {
     if(W == NULL)
@@ -23,24 +26,29 @@ private:
 	Dodaj(n,W);
       }
   }
+//**************************************************************************
+
 public:
-  
+
+//**************************************************************************
   virtual ~ DrzewoBin()
   {
     delete _Korzen;
     _Korzen = NULL;
   }
+//**************************************************************************
   DrzewoBin()
   {
     _Korzen = NULL;
     _LiczbaWezlow = 0;
   }
+//**************************************************************************
   DrzewoBin(Typ W)
   {
     _Korzen = new Wezel<Typ>(W);
     _LiczbaWezlow = 1;
   } 
-
+//**************************************************************************
   Wezel<Typ> *Wyszukaj (Wezel<Typ> *S, const Typ Wartosc)const 
   {
     if(S ->_Wartosc == Wartosc)
@@ -52,9 +60,7 @@ public:
     else
       return NULL;
   }
-  
-
-    
+//**************************************************************************  
   void Dodaj(const Typ Wartosc,Wezel<Typ> *S)
   {
     if(_Korzen == NULL)
@@ -71,8 +77,9 @@ public:
         DodajGalaz(S ->_Lewy,Wartosc);
       }
   }
-	
+//**************************************************************************	
   void Usun(Wezel<Typ> *S){}
+//**************************************************************************
   void PrzejdzDrzewo(Wezel<Typ> *S)
   {
     if(S ->_Lewy != NULL)
@@ -83,7 +90,10 @@ public:
     if(S->_Prawy != NULL)
       PrzejdzDrzewo(S->_Prawy);
   }
+//**************************************************************************
   Wezel<Typ> *_ZwrocKorzen()const {return _Korzen;}
+//**************************************************************************
   unsigned int _ZwrocLWezlow()const{return _LiczbaWezlow;}
+//**************************************************************************
 };
 #endif

@@ -2,6 +2,14 @@
 
 using namespace std;
 //**************************************************************************
+Wyniki::Wyniki()
+{
+  _IloscProb = 0;
+  _IloscPowtorzen = 0;
+  _TablicaRozmiarow = NULL;
+  _TablicaWynikow = NULL;
+}
+//**************************************************************************
 Wyniki::Wyniki(const unsigned int Powtorzen,const unsigned int Proby,
 	       unsigned int *Rozmiary)
 {
@@ -18,6 +26,8 @@ Wyniki::~Wyniki()
 {
   delete [] _TablicaRozmiarow;
   delete [] _TablicaWynikow;
+  _TablicaRozmiarow = NULL;
+  _TablicaWynikow = NULL;
 }
 //**************************************************************************
 void Wyniki::_ZapiszWyniki(std::string NazwaPlikWy)const
