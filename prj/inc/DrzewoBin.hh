@@ -31,7 +31,7 @@ private:
 public:
 
 //**************************************************************************
-  virtual ~ DrzewoBin()
+  virtual ~DrzewoBin()
   {
     delete _Korzen;
     _Korzen = NULL;
@@ -91,7 +91,7 @@ public:
       PrzejdzDrzewo(S->_Prawy);
   }
 //**************************************************************************
-  Wezel<Typ> *_ZwrocKorzen()const {return _Korzen;}
+  Wezel<Typ> *_ZwrocKorzen() {return _Korzen;}
 //**************************************************************************
   unsigned int _ZwrocLWezlow()const{return _LiczbaWezlow;}
 //**************************************************************************
