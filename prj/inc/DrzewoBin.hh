@@ -1,7 +1,7 @@
 #ifndef DRZEWOBIN_HH
 #define DRZEWOBIN_HH
 #include "Wezel.hh"
-
+#include "IDrzewo.hh"
 ///////////////////////////DEFINICJA KLASY//////////////////////////////////
 template<class Typ>
 class DrzewoBin:public IDrzewo<Typ>
@@ -10,75 +10,26 @@ private:
 //**************************************************************************
   Wezel<Typ> * _Korzen;
 //**************************************************************************
-  unsigned int _LiczbaWezlow;
-//**************************************************************************
-  void DodajGalaz(Wezel<Typ> *&W,const Typ n)
+  Wezel<Typ>* Dodaj(Typ Wartosc,Wezel<Typ> *&S)
   {
-    if(W == NULL)
-      {
-	Wezel<Typ> * N = new Wezel<Typ>(n);
-	N ->_Rodzic = W;
-	W = N;
-	++_LiczbaWezlow;
-      }
-    else
-      {
-	Dodaj(n,W);
-      }
-  }
-//**************************************************************************
-
-public:
-
-//**************************************************************************
-  virtual ~DrzewoBin()
-  {
-    delete _Korzen;
-    _Korzen = NULL;
-  }
-//**************************************************************************
-  DrzewoBin()
-  {
-    _Korzen = NULL;
-    _LiczbaWezlow = 0;
-  }
-//**************************************************************************
-  DrzewoBin(Typ W)
-  {
-    _Korzen = new Wezel<Typ>(W);
-    _LiczbaWezlow = 1;
-  } 
-//**************************************************************************
-  Wezel<Typ> *Wyszukaj (Wezel<Typ> *S, const Typ Wartosc)const 
-  {
-    if(S ->_Wartosc == Wartosc)
-      return S;
-    else if( S ->_Wartosc < Wartosc && S ->_Prawy != NULL)
-      return Wyszukaj(S ->_Prawy,Wartosc);
-    else if( S ->_Wartosc > Wartosc && S ->_Lewy != NULL)
-      return Wyszukaj(S ->_Lewy,Wartosc);
-    else
-      return NULL;
-  }
-//**************************************************************************  
-  void Dodaj(const Typ Wartosc,Wezel<Typ> *S)
-  {
-    if(_Korzen == NULL)
-      {
-	_Korzen = new Wezel<Typ>(Wartosc);
-	++_LiczbaWezlow;
-      }
+    if(S == NULL)
+      S = new Wezel<Typ>(Wartosc);
     else if(Wartosc > S ->_Wartosc)
+      Dodaj(Wartosc,S ->_Prawy);
+    else 
+     Dodaj(Wartosc,S ->_Lewy);
+    return S;
+  }
+//**************************************************************************
+  void Pokaz(Wezel<Typ> *W)const
+  {
+    if(W != NULL)
       {
-	DodajGalaz(S ->_Prawy,Wartosc);
-      }
-    else
-      {
-        DodajGalaz(S ->_Lewy,Wartosc);
+	cout << " " << W->_Wartosc << " ";
+	Pokaz(W ->_Lewy);
+	Pokaz(W->_Prawy);
       }
   }
-//**************************************************************************	
-  void Usun(Wezel<Typ> *S){}
 //**************************************************************************
   void PrzejdzDrzewo(Wezel<Typ> *S)
   {
@@ -91,9 +42,58 @@ public:
       PrzejdzDrzewo(S->_Prawy);
   }
 //**************************************************************************
-  Wezel<Typ> *_ZwrocKorzen() {return _Korzen;}
+
+public:
+
 //**************************************************************************
-  unsigned int _ZwrocLWezlow()const{return _LiczbaWezlow;}
+  void Dodaj(const Typ Wartosc)
+  {
+    if(_Korzen == NULL)
+      (_Korzen = new Wezel<Typ>(Wartosc));
+    else
+      (Dodaj(Wartosc,_Korzen));
+  }
 //**************************************************************************
+  virtual ~DrzewoBin()
+  {
+    delete _Korzen;
+    _Korzen = NULL;
+  }
+//**************************************************************************
+  DrzewoBin()
+  {
+    _Korzen = NULL;
+  }
+//**************************************************************************
+  DrzewoBin(Typ W)
+  {
+    _Korzen = new Wezel<Typ>(W);
+  } 
+//**************************************************************************
+  bool Wyszukaj (Wezel<Typ> *S, const Typ Wartosc)const 
+  {
+    if(S ->_Wartosc == Wartosc)
+      return true;
+    else if( S ->_Wartosc < Wartosc && S ->_Prawy != NULL){
+      Wyszukaj(S ->_Prawy,Wartosc); return false;}
+    else if( S ->_Wartosc > Wartosc && S ->_Lewy != NULL){
+      Wyszukaj(S ->_Lewy,Wartosc); return false;}
+    else
+      return false;
+  }
+  bool Wyszukaj(const Typ Wartosc)const
+  {
+    while(Wyszukaj(_Korzen,Wartosc));
+      return true;
+  }
+//**************************************************************************  
+  void Usun(Wezel<Typ> *S){}
+//**************************************************************************
+  void Pokaz()
+  {
+    PrzejdzDrzewo(_Korzen);
+  }
+//**************************************************************************
+
 };
 #endif

@@ -2,7 +2,7 @@
 #define BENCHMARK_HH
 
 #include "BenchmarkInterfejs.hh"
-#include "IDrzewo.hh"
+#include "Itest.hh"
 
 //****************************************************************************************
 /*!
@@ -21,28 +21,10 @@
 
 ////////////////////////////////DEFINICJA KLASY//////////////////////////////////////////
 template<class Typ>
-class StrukturyBenchmark: public BenchmarkInterfejs,public IObserwowany
+class StrukturyBenchmark: public IObserwowany
 {
-
 private:
- 
-//****************************************************************************************
-/*!
- *\brief Pole StrulturyBenchmark
- * Pole zawiera wskaźnik na Struktury, za pomoca niego i metod wirtualnych beda wywolywane 
- * odpowiednie dla danej strktury metody
- */
-//****************************************************************************************
-  IDrzewo<Typ> *W;
-//****************************************************************************************	
-/*!
- *\brief Pole StrkturyBenchmark
- *Pole zawiera wskaznik na typ calkowity, sluzy on do alokowania pamieci dla wczytanych 
- * z pliku danych
- */
-//****************************************************************************************
-  int * _Wartosci;
-//****************************************************************************************
+ //****************************************************************************************
 /*!
  *\brief Pole StrukturyBenchmark
  *
@@ -93,34 +75,6 @@ private:
  * \param[in] n - ilosc danych ktora zapelnona struktura 
  */
 //****************************************************************************************
-  void _Test(const unsigned int n) const
-  {
-    for(unsigned int i = 0; i < n; ++i) 
-      ;
-  }
-//****************************************************************************************
-/*!
- *\brief Metoda wypelniajaca 
- *Metoda ma za zadanie wypelnic dany kontener danymi
- *
- *\param[in] n - ilosc danych 
- */
-//****************************************************************************************
-  void _Zaladuj(const unsigned int n) const
-  {
-    for(unsigned int i = 0; i < n; ++i)
-      ;
-  }
-//**************************************************************************************** 
-/*!
- *\brief Metoda zwalniajaca Pamiec
- *
- * Metoda ma za zadanie zwolnic pamiec przeznaczona na dane
- * przechowywane w kontenerze
- */
-//****************************************************************************************
-  void _Zwolnij(){;}
-//****************************************************************************************
 /*!
  *\brief Metoda informujaca obserwatorow
  *
@@ -146,7 +100,6 @@ public:
     _IloscPowt = 0;
     _TablicaRozmiarow = NULL;
     _IloscDanych = 0;
-    _Wartosci = NULL;
     std::list<IObserwator *>::iterator it;
     for(it = Obserwatorzy.begin(); it != Obserwatorzy.end(); ++it)
       (*it) = NULL;
@@ -154,9 +107,7 @@ public:
 //****************************************************************************************
   virtual ~StrukturyBenchmark()
   {
-    delete[] _Wartosci;
     delete [] _TablicaRozmiarow;
-    _Wartosci = NULL;
     _TablicaRozmiarow = NULL;
 
     std::list<IObserwator *>::iterator it;
@@ -176,13 +127,10 @@ public:
     _IloscPowt = Powt;
     _TablicaRozmiarow = new unsigned int[_IloscProb];
     _IloscDanych = Rozmiary[_IloscProb-1];
-    _Wartosci = new int[_IloscDanych];
-    
-  for(unsigned int i = 0; i < _IloscProb; ++i){
+   
+    for(unsigned int i = 0; i < _IloscProb; ++i){
     _TablicaRozmiarow[i] = Rozmiary[i];}
-  
-  for (unsigned int i = 0; i < _IloscDanych; ++i){
-    _Wartosci[i] = 0;}
+
   }
 //****************************************************************************************
 /*!
@@ -193,30 +141,21 @@ public:
  * przez klase zewnetrzna
  */
 //****************************************************************************************
-  void _WykonajTest()
+  void _WykonajTest(Itest *&W,string NazwaPliku)
   {
     for (unsigned int i = 0; i < _IloscProb; ++i)
       {
 	for(unsigned int j = 0; j < _IloscPowt; ++j)
 	  {
-	    this -> _Zaladuj(_TablicaRozmiarow[i]);
+	    W -> _Zaladuj(_TablicaRozmiarow[i],NazwaPliku);
 	    this -> _PowiadomObserwatorow();
-	    this -> _Test(_TablicaRozmiarow[i]);
+	    W -> _Wykonaj(_TablicaRozmiarow[i],NazwaPliku);
 	    this -> _PowiadomObserwatorow();
-	    this -> _Zwolnij();
+	    W -> _Zwolnij();
 	  }
       }
   }
-//****************************************************************************************
-/*!
- *\brief Metoda Ustawiajaca
- *
- * Metoda ma za zadanie okreslic na jakich obiektach zostanie wykonana praca
- * poprzez przypisanie do wskaznikow abstrakcyjnych interfejsow obiektow, ktore posiadaja
- * dany interfejs
- */
-//****************************************************************************************
-  // void _Ustaw(TablicaAso &A){W = &A;}
+
 //****************************************************************************************
 /*!\brief Metoda Wczytujaca dane
  *
@@ -248,7 +187,7 @@ public:
 		std::cout << "Napotkany EOF przed wczytaniem wszytskich danych"
 			  << std::endl;
 	      }
-	    _Wartosci[i] = Temp;
+	  
 	  }
       }
   }

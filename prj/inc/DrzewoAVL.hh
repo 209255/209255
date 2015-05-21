@@ -1,78 +1,107 @@
 #ifndef DRZEWOAVL_HH
 #define DRZEWOAVL_HH
-#include"WezelAVL.hh"
+#include"Wezel.hh"
+#include"IDrzewo.hh"
 #include<cstring>
+
 template<class Typ>
-class DrzewoAVL
+class DrzewoAVL: public IDrzewo<Typ>
 {
 private:
 
 //**************************************************************************
-  WezelAVL<Typ>* _Korzen;
+  Wezel<Typ>* _Korzen;
 //**************************************************************************
-  int Wysokosc(WezelAVL<Typ> *W)const 
+  int Wysokosc(Wezel<Typ> *W)const 
   {
-    int n;
-    if(W == NULL) return -1;
+    if(W == NULL)
+      return 0;
+    int l = Wysokosc(W ->_Lewy);
+    int r = Wysokosc(W ->_Prawy);
+    if(l > r)
+      return l+1;
     else
-      {
-	n = W->_Wysokosc;
-	return n;
-      }
-  }
-  int max(int l,int p)
-  {
-    return((l > p) ? l: p);
+      return r+1;
   }
 //**************************************************************************
-  void RotacjaPrawa(WezelAVL<Typ> *&W)
+  void RotacjaPrawa(Wezel<Typ> *&W)
   {
-    WezelAVL<Typ> *Temp = W ->_Prawy;
+    Wezel<Typ> *Temp = W ->_Prawy;
     W ->_Prawy = Temp ->_Lewy;
     Temp ->_Lewy = W;
-    W ->_Wysokosc = max(Wysokosc(W ->_Lewy),Wysokosc(W->_Prawy)) +1;
     W = Temp;
-    Temp ->_Wysokosc = max(W ->_Wysokosc,Wysokosc(Temp ->_Prawy))+1;
   }
 //**************************************************************************
-  void RotacjaLewa(WezelAVL<Typ> *&W)
+  void RotacjaLewa(Wezel<Typ> *&W)
   {
-    WezelAVL<Typ> *Temp = W ->_Lewy;
+    Wezel<Typ> *Temp = W ->_Lewy;
     W ->_Lewy = Temp ->_Prawy;
     Temp ->_Prawy = W;
-    W ->_Wysokosc = max(Wysokosc(W ->_Lewy),Wysokosc(W ->_Prawy))+1;
     W = Temp;
-    Temp ->_Wysokosc = max(Wysokosc(Temp->_Lewy),W ->_Wysokosc)+1;
-		       
   }
 //**************************************************************************
-  void RotacjaRL(WezelAVL<Typ> *&W)
+  void RotacjaRL(Wezel<Typ> *&W)
   {
-    cout << "wewRL" << endl;
     RotacjaPrawa(W->_Lewy);
     RotacjaLewa(W);
   }
 //**************************************************************************
-  void RotacjaLR(WezelAVL<Typ> *&W)
+  void RotacjaLR(Wezel<Typ> *&W)
   {
-    cout << "wewLR" << endl;
     RotacjaLewa(W->_Prawy);
     RotacjaPrawa(W);
   }
 //**************************************************************************
-/*
- void DodajGalaz(WezelAVL<Typ> *&W,const Typ n)
+  Wezel<Typ>* Dodaj(Typ Wartosc,Wezel<Typ> *&S)
   {
-    if(W == NULL)
+    if(S == NULL)
+      S = new Wezel<Typ>(Wartosc);
+    else if(Wartosc < S->_Wartosc)
       {
-	W = new WezelAVL<Typ>(n);
+	Dodaj(Wartosc,S->_Lewy);
+	if((Wysokosc(S->_Lewy) - Wysokosc(S->_Prawy)) == 2)
+	  {
+	    if(Wartosc < S->_Lewy->_Wartosc)
+	      RotacjaLewa(S);
+	    else
+	      RotacjaRL(S);
+	  }
       }
     else
       {
-	Dodaj(n,W);
+	Dodaj(Wartosc,S->_Prawy);
+	if((Wysokosc(S->_Prawy) - Wysokosc(S->_Lewy)) == 2)
+	  {
+	    if(Wartosc > S->_Prawy->_Wartosc)
+	      RotacjaPrawa(S);
+	    else
+	      RotacjaLR(S);
+	  }
       }
-      }*/
-//**************************************************************************
+    return S;
+  }
+//**************************************************************************  
+ void PrzejdzDrzewo(Wezel<Typ> *S)
+  {
+    if(S ->_Lewy != NULL)
+      PrzejdzDrzewo(S->_Lewy);
+    
+    cout << S ->_Wartosc << endl;
+    
+    if(S->_Prawy != NULL)
+      PrzejdzDrzewo(S->_Prawy);
+  }
+//**************************************************************************  
+  void Pokaz(Wezel<Typ> *W)const
+    {
+      if(W !=NULL)
+	{
+	  cout << " " << W->_Wartosc << " ";
+	  Pokaz(W ->_Lewy);
+	  Pokaz(W->_Prawy);
+	}
+    }
+//**************************************************************************  
 
 public:
 
@@ -90,105 +119,40 @@ public:
 //**************************************************************************
   DrzewoAVL(const Typ W)
   {
-    _Korzen = new WezelAVL<Typ>(W);
+    _Korzen = new Wezel<Typ>(W);
   } 
 //**************************************************************************
-  WezelAVL<Typ> *Wyszukaj (WezelAVL<Typ> *S, const Typ Wartosc)const 
+  bool Wyszukaj (Wezel<Typ> *S, const Typ Wartosc)const 
   {
     if(S ->_Wartosc == Wartosc)
-      return S;
-    else if( S ->_Wartosc < Wartosc && S ->_Prawy != NULL)
-      return Wyszukaj(S ->_Prawy,Wartosc);
-    else if( S ->_Wartosc > Wartosc && S ->_Lewy != NULL)
-      return Wyszukaj(S ->_Lewy,Wartosc);
+      return true;
+    else if( S ->_Wartosc < Wartosc && S ->_Prawy != NULL){
+      Wyszukaj(S ->_Prawy,Wartosc);return false;}
+    else if( S ->_Wartosc > Wartosc && S ->_Lewy != NULL){
+      Wyszukaj(S ->_Lewy,Wartosc);return false;}
     else
-      return NULL;
+      return false;
   }
-  void Dodaj(const Typ Wartosc)
+  bool Wyszukaj(const Typ Wartosc)const
   {
-    Dodaj(Wartosc,_Korzen);
+    while(!Wyszukaj(_Korzen,Wartosc));
+    return true;
   }
 //**************************************************************************  
-  void Dodaj(Typ Wartosc,WezelAVL<Typ> *&S)
+  void Dodaj(const Typ Wartosc)
   {
-    if(S == NULL)
-      {
-	S = new WezelAVL<Typ>(Wartosc);
-      }
+    if(_Korzen == NULL)
+      _Korzen = new Wezel<Typ>(Wartosc);
     else
-      {
-	if(Wartosc < S->_Wartosc)
-	  {
-	    Dodaj(Wartosc,S->_Lewy);
-	    if((Wysokosc(S->_Lewy) - Wysokosc(S->_Prawy)) == 2)
-	      {
-		cout << "lewa"<< endl;
-		if(Wartosc < S->_Lewy->_Wartosc)
-		  {
-		    cout <<"rotacjaLewa" << endl;
-		    RotacjaLewa(S);
-		  }
-		else
-		  {
-		    cout<<"rotacjaRL" << endl;
-		    RotacjaRL(S);
-		  }
-	      }
-	    else if(S->_Wartosc < Wartosc)
-	      {
-		Dodaj(Wartosc,S->_Prawy);
-		if((Wysokosc(S->_Prawy) - Wysokosc(S->_Lewy)) == 2)
-		  {
-		    cout<<"Prawa" << endl;
-		    if(Wartosc > S->_Prawy->_Wartosc)
-		      {
-			cout << "RotacjaPrawa" <<endl;
-			RotacjaPrawa(S);
-		      }
-		    else
-		      {
-			cout <<"RotacjaLR" << endl;
-			RotacjaLR(S);
-		      }
-		  }
-	      }
-	  }
-      }
-    S ->_Wysokosc = max(Wysokosc(S ->_Lewy),Wysokosc(S->_Prawy)) +1;
-  }  
+      Dodaj(Wartosc,_Korzen);
+  }
 //**************************************************************************
-  void Usun(WezelAVL<Typ> *S){}
-  void PrzejdzDrzewo(WezelAVL<Typ> *S)
+  void Usun(Wezel<Typ> *S){}
+//**************************************************************************  
+ void Pokaz()
   {
-    if(S ->_Lewy != NULL)
-      PrzejdzDrzewo(S->_Lewy);
-    
-    cout << S ->_Wartosc << endl;
-    
-    if(S->_Prawy != NULL)
-      PrzejdzDrzewo(S->_Prawy);
+    PrzejdzDrzewo(_Korzen);
   }
-  WezelAVL<Typ> *_ZwrocKorzen() {return _Korzen;}
-  void PreOrder(std::ostream &out,WezelAVL<Typ> pre)const
-  {
-    if(pre !=NULL)
-      {
-	out << pre->_Wartosc << "[label=\"" << pre->_Wartosc
-	    <<"\\n" << Wysokosc(pre) << "\];\n";
-      }
-  }
-  void Pokaz()const
-  {
-    Pokaz(_Korzen);
-  }
-    void Pokaz(WezelAVL<Typ> *W)const
-    {
-      if(W !=NULL)
-	{
-	  cout << " " << W->_Wartosc << " ";
-	  Pokaz(W ->_Lewy);
-	  Pokaz(W->_Prawy);
-	}
-    }
+//**************************************************************************  
 };
 #endif
