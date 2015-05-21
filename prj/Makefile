@@ -4,7 +4,7 @@
 CPPFLAGS= -c -g -Iinc -Wall -pedantic 
 
 
-Struktury:  obj/Czasomierz.o obj/Wyniki.o obj/Main.o
+Struktury:  obj/Czasomierz.o obj/Wyniki.o obj/Graf.o obj/Main.o
 	g++ -Wall -pedantic -o Struktury obj/*.o
 
 obj:
@@ -12,7 +12,8 @@ obj:
 
 obj/Main.o: src/Main.cpp inc/*.hh
 	g++ ${CPPFLAGS} -o obj/Main.o src/Main.cpp
-
+obj/Graf.o: src/Graf.cpp inc/Graf.hh
+	g++ ${CPPFLAGS} -o obj/Graf.o src/Graf.cpp
 obj/Wyniki.o: src/Wyniki.cpp inc/Wyniki.hh
 	g++ ${CPPFLAGS} -o obj/Wyniki.o src/Wyniki.cpp
 
