@@ -70,4 +70,27 @@ void Graf::BFS(const int W)
     }
   delete [] Odwiedzone;
 }
-  
+void Graf::DFS(const int x,const int Wymagany)
+{
+  StosTab<int> S;
+  bool *Odwiedzony =new bool[_V];
+  for(int i = 0; i < _V; ++i)
+    Odwiedzony[i] = false;
+  S._Push(x);
+  Odwiedzony[x] = true;
+  if(x == Wymagany) return;
+  cout << x << " : " << endl;
+  while(!S.CzyPusty())
+    {
+      int k = S._Pop();
+      if(k == Wymagany) break;
+      cout << k << " ";
+      for(int i = _V; i >0; --i)
+	if(_CzyKrawedz(k,i) && !Odwiedzony[i])
+	  {
+	    S._Push(i);
+	    Odwiedzony[i] = true;
+	  }
+    }
+  delete [] Odwiedzony;
+}

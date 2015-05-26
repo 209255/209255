@@ -17,10 +17,13 @@ int main()
   srand(time(NULL));
   K._DodajKrawedz(1,2);
   K._DodajKrawedz(1,3);
-  K._DodajKrawedz(2,4);
-  K._DodajKrawedz(3,4);
-  K._DodajKrawedz(1,7);
+  K._DodajKrawedz(1,4);
+  K._DodajKrawedz(2,5);
+  K._DodajKrawedz(2,6);
+  K._DodajKrawedz(4,7);
+  K._DodajKrawedz(4,8);
   K.BFS(1);
+  K.DFS(1,4);
 
   /*
   S -> _DodajObserwator(W);
