@@ -3,7 +3,7 @@ using namespace std;
 
 //*****************************************************************
 Graf::Graf(const unsigned int k):
-  _V(k)
+  _V(k),_E(0)
 {
   _EMacierz = new unsigned int *[_V];
   for(unsigned int i = 0; i <_V; ++i)
@@ -47,36 +47,27 @@ bool Graf::_CzyKrawedz(const unsigned int i,const unsigned int j)
     return false;
 }
 //******************************************************************
-StosTab<int> Graf::DFS()
+void Graf::BFS(const int W)
 {
-  VertexStatus * S = new VertexStatus[_V];
-  StosTab<int> O;
-  for(unsigned int i = 0; i <_V; ++i)
-    S[i] = Bialy;
-
-  UruchomDFS(0,S,O);
-  delete [] S;
-  return O;
+  Kolejka<int> K;
+  bool *Odwiedzone = new bool[_V];
+  for(unsigned int i  = 0; i < _V; ++i)
+    Odwiedzone[i] = false;
+  K._Push(W,K._Rozmiar());
+  Odwiedzone[W] = true;
+  cout << W << " : " << endl; 
+  while(!K.CzyPusta())
+    {
+      int v = K._Pop();
+      cout << v << " " ;
+      for(unsigned int j = 0; j < _V; ++j)
+	if(_CzyKrawedz(v,j) && !Odwiedzone[j])
+	  {
+	    K._Push(j,K._Rozmiar());
+	    Odwiedzone[j] = true;
+	  }
+     
+    }
+  delete [] Odwiedzone;
 }
-//******************************************************************
-void Graf::UruchomDFS(const unsigned int i,VertexStatus S[]
-		      ,StosTab<int> &O)
-{
-  S[i] = Szary;
-  for(unsigned int j = 0; j<_V; ++j)
-    if(_CzyKrawedz(i,j) && S[j] == Bialy)
-      UruchomDFS(j,S,O);
-  S[i] = Bialy;
-  O._Push(i);
-}
-//******************************************************************
-void Graf::_ZnajdzDroge(const unsigned int k)
-{
-  StosTab<int> O = DFS();
-  Lista<int> Sciezka;
-  bool CzyZnalezniono = false;
-
-  for(unsigned int i = 0; i <_V; ++i)
-    ;    
-}   
-//******************************************************************
+  

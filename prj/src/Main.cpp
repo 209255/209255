@@ -1,7 +1,6 @@
 #include"StrukturyBenchmark.hh"
 #include "Wyniki.hh"
-#include "DrzewoBinTest.hh"
-#include "DrzewoAVLTest.hh"
+#include "Graf.hh"
 #define ILOSC_POW 10
 #define ILOSC_PROB 5
 using namespace std;
@@ -11,18 +10,17 @@ using namespace std;
  */
 int main()
 {
-  DrzewoAVL<int> D;
-  DrzewoBin<int> B,C;
+  Graf K(10);
   unsigned int Tablica_Rozmiarow[] = {100,1000,10000,100000,1000000};
   Wyniki *W = new Wyniki(ILOSC_POW,ILOSC_PROB,Tablica_Rozmiarow);
   StrukturyBenchmark<int> *S = new StrukturyBenchmark<int>(ILOSC_PROB,ILOSC_POW,Tablica_Rozmiarow);
   srand(time(NULL));
-  int d;
-  for(unsigned int i =0; i <10;++i)
-    {
-      B.Dodaj(rand()%100);
-    }
-  B.Pokaz();
+  K._DodajKrawedz(1,2);
+  K._DodajKrawedz(1,3);
+  K._DodajKrawedz(2,4);
+  K._DodajKrawedz(3,4);
+  K._DodajKrawedz(1,7);
+  K.BFS(1);
 
   /*
   S -> _DodajObserwator(W);
