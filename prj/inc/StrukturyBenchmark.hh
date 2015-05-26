@@ -141,56 +141,21 @@ public:
  * przez klase zewnetrzna
  */
 //****************************************************************************************
-  void _WykonajTest(Itest *&W,string NazwaPliku)
+  void _WykonajTest(Itest &W,string NazwaPliku)
   {
     for (unsigned int i = 0; i < _IloscProb; ++i)
       {
 	for(unsigned int j = 0; j < _IloscPowt; ++j)
 	  {
-	    W -> _Zaladuj(_TablicaRozmiarow[i],NazwaPliku);
+	    W._Zaladuj(_TablicaRozmiarow[i],NazwaPliku);
 	    this -> _PowiadomObserwatorow();
-	    W -> _Wykonaj(_TablicaRozmiarow[i],NazwaPliku);
+	    W._Wykonaj(_TablicaRozmiarow[i],NazwaPliku);
 	    this -> _PowiadomObserwatorow();
-	    W -> _Zwolnij();
+	    W._Zwolnij();
 	  }
       }
   }
 
-//****************************************************************************************
-/*!\brief Metoda Wczytujaca dane
- *
- * Metoda ma za zadanie wczytac dane wejciowe o podanej przez 
- * argument nazwie oraz przypisac wskaznik do zaalokwanych w pamieci danych
- *
- *\param[in] PlikIn - nazwa pliku wejsciowego z danymi
- *\param[in] Ilosc - Ilosc danych jaka bedzie wczytywana
- */
-//****************************************************************************************
-  void _Wczytaj(string PlikWart)
-  {
-    ifstream Plik_Wart;
-    Typ Temp;
-    Plik_Wart.open(PlikWart.c_str(),ios::in);
-    
-    if(!Plik_Wart )
-      {
-	std::cerr << "Blad przy otwieraniu Pliku: " 
-		<< std::endl;exit(1);
-      }
-    else
-      {
-	for(unsigned int i = 0;i < _IloscDanych ; ++i)
-	  {
-	    Plik_Wart >> Temp;
-	    if(Plik_Wart.eof())
-	      {
-		std::cout << "Napotkany EOF przed wczytaniem wszytskich danych"
-			  << std::endl;
-	      }
-	  
-	  }
-      }
-  }
 //****************************************************************************************
 /*!
  *\brief Metoda dodajaca obserwator
@@ -232,7 +197,7 @@ public:
  * i zapisac je do pliku
  */
 //****************************************************************************************
-  void _Generator()const
+  void _Generator(const unsigned int n)const
   {
     fstream PlikWy;
     srand(time (NULL));
@@ -240,8 +205,8 @@ public:
     PlikWy.open("Dane.dat",ios::out);
     if(PlikWy.good())
       {
-      for(unsigned int i = 0 ; i < _IloscDanych; ++i)
-	PlikWy << rand() % 100 << endl;
+      for(unsigned int i = 0 ; i <n; ++i)
+	PlikWy << rand()%100<< endl;
       }
     else
       {

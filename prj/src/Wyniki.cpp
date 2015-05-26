@@ -69,8 +69,8 @@ void Wyniki::_ZapiszWyniki(std::string NazwaPlikWy)const
       Stoper._AktualizujCzas();
       if(LicznikPowt ==  _IloscPowtorzen)
 	{
-	  _TablicaWynikow[LicznikProb] =  (Stoper._CzasTrwania()
-					   /_IloscPowtorzen);
+	  _TablicaWynikow[LicznikProb] =  
+	     (Stoper._CzasTrwania()/_IloscPowtorzen)/_TablicaRozmiarow[LicznikProb];
 	  LicznikProb++;
 	  LicznikPowt = 0;
 	  Stoper._Reset();
@@ -78,4 +78,3 @@ void Wyniki::_ZapiszWyniki(std::string NazwaPlikWy)const
      }
 }
 //**************************************************************************
-

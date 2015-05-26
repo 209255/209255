@@ -1,9 +1,9 @@
 #include"StrukturyBenchmark.hh"
 #include "Wyniki.hh"
 #include "DrzewoBinTest.hh"
-#include "DrzewoAVLTest.hh"
+#include "TreeAVLTest.hh"
 #define ILOSC_POW 10
-#define ILOSC_PROB 5
+#define ILOSC_PROB 10
 using namespace std;
 /*!
  *\file
@@ -11,27 +11,17 @@ using namespace std;
  */
 int main()
 {
-  DrzewoAVL<int> D;
-  DrzewoBin<int> B,C;
-  unsigned int Tablica_Rozmiarow[] = {100,1000,10000,100000,1000000};
+
+  TreeAVLTest<int> E;
+  DrzewoBinTest<int> B;
+  unsigned int Tablica_Rozmiarow[] = {50,100,500,1000,5000,10000,50000,100000,500000,1000000};
   Wyniki *W = new Wyniki(ILOSC_POW,ILOSC_PROB,Tablica_Rozmiarow);
   StrukturyBenchmark<int> *S = new StrukturyBenchmark<int>(ILOSC_PROB,ILOSC_POW,Tablica_Rozmiarow);
-  srand(time(NULL));
-  int d;
-  for(unsigned int i =0; i <10;++i)
-    {
-      B.Dodaj(rand()%100);
-    }
-  B.Pokaz();
-
-  /*
+  //S-> _Generator(10000000);
   S -> _DodajObserwator(W);
-  //S -> _Ustaw(O);
-  //S -> _Generator();
-  S -> _Wczytaj("Dane.dat","Klucze.dat");
-  S -> _WykonajTest();
+  S -> _WykonajTest(E,"Dane.dat");
   W -> _ZapiszWyniki("Wyniki.dat");
-  S -> _UsunObserwator(W);
-  */
+  S -> _UsunObserwator(W);  
+ 
   return 0;
 }
