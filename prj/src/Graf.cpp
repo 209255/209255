@@ -6,14 +6,14 @@ Graf::Graf(unsigned int k):
   _V(k),_E(0)
 {
   _EMacierz = new unsigned int *[_V];
-  for(unsigned int i = 0; i <_V; ++i)
+  for(unsigned int i = 0; i < _V; ++i)
     {
       _EMacierz[i] = new unsigned int [_V];
-      for(unsigned int j = 0; j<_V; ++j)
+      for(unsigned int j = 0; j < _V; ++j)
 	_EMacierz[i][j] = 0;
     }
   _VMacierz = new unsigned int[_V];
-  for(unsigned int i = 0; i <_V; ++i)
+  for(unsigned int i = 0; i < _V; ++i)
     {
       _VMacierz[i] = i;
     }
@@ -21,12 +21,12 @@ Graf::Graf(unsigned int k):
 //*****************************************************************
 Graf::~Graf()
 {
-  for(unsigned int i = 0; i<_V; ++i)
+  for(unsigned int i = 0; i< _V; ++i)
     delete [] _EMacierz[i];
   delete [] _EMacierz;
 }
 //******************************************************************
-void Graf::_DodajKrawedz(const unsigned int i,const unsigned int j)
+void Graf::_DodajKrawedz(unsigned int i, unsigned int j)
 {
   //cout<<"i: "<<i <<"j; " << j <<endl;
   if(!(i <= _V && j <= _V)) throw"Brak elementu";
@@ -102,8 +102,7 @@ void Graf:: _Zaladuj(unsigned int n)
     const unsigned int m = (n/2);
     for(unsigned int i = 1; i < n; ++i)
       {
-        
-	if(i < m)
+       	if(i < m)
 	  {
 	    //cout << "i: " << i << endl;
 	    _DodajKrawedz(i,i+1);
@@ -111,14 +110,13 @@ void Graf:: _Zaladuj(unsigned int n)
 	    _DodajKrawedz(i,m+i+1);
 	  }
 	if(i > m)
-	  {
-	     _DodajKrawedz(i,i+1);
-	  }
+	  _DodajKrawedz(i,i+1);
       }
   }
-void Graf::_Wykonaj(const unsigned int n)
+void Graf::_Wykonaj(unsigned int n)const
 {
-  this ->BFS(1,(n/2)+1);
+  const int m = n/2;
+  this ->BFS(1,m+1);
 }
 void Graf::_Zwolnij()
 {

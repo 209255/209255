@@ -120,8 +120,8 @@ public:
  *
  */
 //****************************************************************************************
-  StrukturyBenchmark(unsigned int Proby,unsigned int Powt,
-		    const  unsigned int *Rozmiary)
+  StrukturyBenchmark(const unsigned int Proby,const unsigned int Powt,
+		    const unsigned int *Rozmiary)
   {
     _IloscProb = Proby;
     _IloscPowt = Powt;
@@ -147,12 +147,10 @@ public:
       {
 	for(unsigned int j = 0; j < _IloscPowt; ++j)
 	  {
-	    //W. _Zaladuj(_TablicaRozmiarow[i]);
-	    _PowiadomObserwatorow();
+	    this -> _PowiadomObserwatorow();
 	    W._Wykonaj(_TablicaRozmiarow[i]);
-	    _PowiadomObserwatorow();
-	    //W._Zwolnij();
-	  }
+	    this ->_PowiadomObserwatorow();
+	}
       }
   }
 
