@@ -11,7 +11,7 @@ Wyniki::Wyniki()
 }
 //**************************************************************************
 Wyniki::Wyniki(const unsigned int Powtorzen,const unsigned int Proby,
-	       unsigned int *Rozmiary)
+	       const unsigned int *Rozmiary)
 {
   _IloscProb = Proby;
   _IloscPowtorzen = Powtorzen;
@@ -19,7 +19,10 @@ Wyniki::Wyniki(const unsigned int Powtorzen,const unsigned int Proby,
   _TablicaRozmiarow = new unsigned int[_IloscProb];
   
   for(unsigned int i = 0; i < _IloscProb; i++){
-      _TablicaRozmiarow[i] = Rozmiary[i];}
+      _TablicaRozmiarow[i] = Rozmiary[i];
+      cout <<"R: " << Rozmiary[i] << endl;
+      cout <<"R: " << _TablicaRozmiarow[i] << endl;
+  }
 }
 //**************************************************************************
 Wyniki::~Wyniki()
@@ -39,6 +42,7 @@ void Wyniki::_ZapiszWyniki(std::string NazwaPlikWy)const
 	{
 	  for(unsigned int i = 0; i < _IloscProb; ++i)
 	    {
+	      cout << _TablicaRozmiarow[i] << endl;
 	      PlikWy << _TablicaRozmiarow[i] << " ";
 	      PlikWy << _TablicaWynikow[i];
 	      PlikWy << endl;

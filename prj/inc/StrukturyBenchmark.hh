@@ -121,7 +121,7 @@ public:
  */
 //****************************************************************************************
   StrukturyBenchmark(unsigned int Proby,unsigned int Powt,
-		     unsigned int *Rozmiary)
+		    const  unsigned int *Rozmiary)
   {
     _IloscProb = Proby;
     _IloscPowt = Powt;
@@ -141,17 +141,17 @@ public:
  * przez klase zewnetrzna
  */
 //****************************************************************************************
-  void _WykonajTest(Itest *&W,string NazwaPliku)
+  void _WykonajTest(Itest &W)
   {
     for (unsigned int i = 0; i < _IloscProb; ++i)
       {
 	for(unsigned int j = 0; j < _IloscPowt; ++j)
 	  {
-	    W -> _Zaladuj(_TablicaRozmiarow[i],NazwaPliku);
-	    this -> _PowiadomObserwatorow();
-	    W -> _Wykonaj(_TablicaRozmiarow[i],NazwaPliku);
-	    this -> _PowiadomObserwatorow();
-	    W -> _Zwolnij();
+	    //W. _Zaladuj(_TablicaRozmiarow[i]);
+	    _PowiadomObserwatorow();
+	    W._Wykonaj(_TablicaRozmiarow[i]);
+	    _PowiadomObserwatorow();
+	    //W._Zwolnij();
 	  }
       }
   }
