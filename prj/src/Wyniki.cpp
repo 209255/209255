@@ -11,22 +11,19 @@ Wyniki::Wyniki()
 }
 //**************************************************************************
 Wyniki::Wyniki(const unsigned int Powtorzen,const unsigned int Proby,
-	       const unsigned int *Rozmiary)
+	        unsigned int *Rozmiary)
+  
 {
+  _TablicaRozmiarow = Rozmiary;
   _IloscProb = Proby;
   _IloscPowtorzen = Powtorzen;
   _TablicaWynikow = new long double[_IloscProb];
-  _TablicaRozmiarow = new unsigned int[_IloscProb-1];
-  
-  for(unsigned int i = 0; i < _IloscProb; i++){
-      _TablicaRozmiarow[i] = Rozmiary[i];
-      cout << "T: " <<_TablicaRozmiarow[i] << endl;}
 }
 //**************************************************************************
 Wyniki::~Wyniki()
 {
-  delete [] _TablicaRozmiarow;
-  delete [] _TablicaWynikow;
+  delete []_TablicaRozmiarow;
+  delete []_TablicaWynikow;
   _TablicaRozmiarow = NULL;
   _TablicaWynikow = NULL;
 }
@@ -38,8 +35,6 @@ void Wyniki::_ZapiszWyniki(std::string NazwaPlikWy)const
     {
       if(PlikWy.good())
 	{
-	  cout << "L: " <<_IloscProb << endl;
-	  cout <<"T: " <<_TablicaRozmiarow[1] <<endl;
 	  for(unsigned int i = 0; i < _IloscProb; ++i)
 	    {
 	      PlikWy << _TablicaRozmiarow[i] << " ";

@@ -1,9 +1,13 @@
 #ifndef BENCHMARK_HH
 #define BENCHMARK_HH
-
-#include "BenchmarkInterfejs.hh"
+#include <iostream>
+#include <cstdlib>
+#include <fstream>
+#include <cstring>
+#include <list>
+#include "IObserwowany.hh"
 #include "Itest.hh"
-
+using namespace std;
 //****************************************************************************************
 /*!
  *\file Definicja Klasy StrukturyBenchmark
@@ -60,14 +64,6 @@ private:
   unsigned int *_TablicaRozmiarow;
 //****************************************************************************************
 /*!
- *\brief Pole StrukturyBenchmark
- *
- * Pole przechowuje informacje o ilosci testyowanych danych
- */
-//****************************************************************************************
-  unsigned int _IloscDanych;
-//****************************************************************************************
-/*!
  *\brief Metoda wykonujaca test dla odpowiedniej struktury
  *
  * Metoda ma za zadanie wykonac zapelnienie struktury danymi o zadanej w argumencie
@@ -99,7 +95,6 @@ public:
     _IloscProb = 0;
     _IloscPowt = 0;
     _TablicaRozmiarow = NULL;
-    _IloscDanych = 0;
     std::list<IObserwator *>::iterator it;
     for(it = Obserwatorzy.begin(); it != Obserwatorzy.end(); ++it)
       (*it) = NULL;
@@ -126,7 +121,6 @@ public:
     _IloscProb = Proby;
     _IloscPowt = Powt;
     _TablicaRozmiarow = new unsigned int[_IloscProb];
-    _IloscDanych = Rozmiary[_IloscProb-1];
    
     for(unsigned int i = 0; i < _IloscProb; ++i){
     _TablicaRozmiarow[i] = Rozmiary[i];}
@@ -141,54 +135,16 @@ public:
  * przez klase zewnetrzna
  */
 //****************************************************************************************
-  void _WykonajTest(Itest &W)
+  void _WykonajTest(Itest &W,unsigned int n)
   {
-    for (unsigned int i = 0; i < _IloscProb; ++i)
+    for(unsigned int j = 0; j < _IloscPowt; ++j)
       {
-	for(unsigned int j = 0; j < _IloscPowt; ++j)
-	  {
-	    this -> _PowiadomObserwatorow();
-	    W._Wykonaj(_TablicaRozmiarow[i]);
-	    this ->_PowiadomObserwatorow();
-	}
+	_PowiadomObserwatorow();
+	W._Wykonaj(n);
+	_PowiadomObserwatorow();
       }
   }
 
-//****************************************************************************************
-/*!\brief Metoda Wczytujaca dane
- *
- * Metoda ma za zadanie wczytac dane wejciowe o podanej przez 
- * argument nazwie oraz przypisac wskaznik do zaalokwanych w pamieci danych
- *
- *\param[in] PlikIn - nazwa pliku wejsciowego z danymi
- *\param[in] Ilosc - Ilosc danych jaka bedzie wczytywana
- */
-//****************************************************************************************
-  void _Wczytaj(string PlikWart)
-  {
-    ifstream Plik_Wart;
-    Typ Temp;
-    Plik_Wart.open(PlikWart.c_str(),ios::in);
-    
-    if(!Plik_Wart )
-      {
-	std::cerr << "Blad przy otwieraniu Pliku: " 
-		<< std::endl;exit(1);
-      }
-    else
-      {
-	for(unsigned int i = 0;i < _IloscDanych ; ++i)
-	  {
-	    Plik_Wart >> Temp;
-	    if(Plik_Wart.eof())
-	      {
-		std::cout << "Napotkany EOF przed wczytaniem wszytskich danych"
-			  << std::endl;
-	      }
-	  
-	  }
-      }
-  }
 //****************************************************************************************
 /*!
  *\brief Metoda dodajaca obserwator
@@ -218,36 +174,7 @@ public:
     Obserwatorzy.remove(O);
   }
 //****************************************************************************************
-/*!
- *\brief Metoda generujaca dane
- *
- * Metoda ma za zadanie wygenerowac pseudolosowe dane 
- * i zapisac je do pliku
- *//*!
- *\brief Metoda generujaca dane
- *
- * Metoda ma za zadanie wygenerowac pseudolosowe dane 
- * i zapisac je do pliku
- */
-//****************************************************************************************
-  void _Generator()const
-  {
-    fstream PlikWy;
-    srand(time (NULL));
-    
-    PlikWy.open("Dane.dat",ios::out);
-    if(PlikWy.good())
-      {
-      for(unsigned int i = 0 ; i < _IloscDanych; ++i)
-	PlikWy << rand() % 100 << endl;
-      }
-    else
-      {
-	cerr << "Blad utworzenia pliku!" << endl; exit(1);
-      }
-    PlikWy.close();
-  }
-//****************************************************************************************
+
 };
 ////////////////////////////////KONIEC DEFINICJI//////////////////////////////////////////
 #endif

@@ -30,7 +30,7 @@ public:
   Wyniki();
 //**************************************************************************
   Wyniki(const unsigned int Powtorzen,const unsigned int Proby,
-	 const unsigned int *Rozmiary);
+	 unsigned int *Rozmiary);
 //**************************************************************************
   virtual ~Wyniki();
 //**************************************************************************
