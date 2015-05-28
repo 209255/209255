@@ -1,9 +1,14 @@
 #ifndef BENCHMARK_HH
 #define BENCHMARK_HH
 
-#include "BenchmarkInterfejs.hh"
+#include <iostream>
+#include <cstdlib>
+#include <fstream>
+#include <cstring>
+#include <list>
 #include "Itest.hh"
-
+#include "IObserwowany.hh"
+using namespace std;
 //****************************************************************************************
 /*!
  *\file Definicja Klasy StrukturyBenchmark
@@ -151,7 +156,7 @@ public:
 	    this -> _PowiadomObserwatorow();
 	    W._Wykonaj(_TablicaRozmiarow[i],NazwaPliku);
 	    this -> _PowiadomObserwatorow();
-	    W._Zwolnij();
+	    // W._Zwolnij();
 	  }
       }
   }

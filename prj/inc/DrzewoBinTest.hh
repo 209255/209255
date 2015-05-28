@@ -24,7 +24,7 @@ public:
   void _Wykonaj(const unsigned int n,const std::string NazwaPliku)
   {
     for(unsigned int i = 0; i<n; ++i)
-      this -> Wyszukaj(_Wartosci[i]);
+      this -> Dodaj(_Wartosci[i]);
   }
 //**************************************************************************  
   void _Zwolnij()
@@ -52,7 +52,7 @@ public:
 		std::cout << "Napotkany EOF przed wczytaniem wszytskich danych"
 			  << std::endl;
 	      }
-	    this ->Dodaj(_Wartosci[i]);
+	    //this ->Dodaj(_Wartosci[i]);
 	  }
       }
   }

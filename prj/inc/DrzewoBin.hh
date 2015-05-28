@@ -13,30 +13,22 @@ private:
 //**************************************************************************
   Wezel<Typ> * _Korzen;
 //**************************************************************************
-  void Dodaj (const Typ& Wartosc,Wezel<Typ> *&S)
+  Wezel<Typ>* Dodaj (const Typ Wartosc,Wezel<Typ> *&S)
   {
-    if(Wartosc <S->_Wartosc)
+    if(S == NULL)
       {
-	if(S->_Lewy != NULL)
-	   Dodaj(Wartosc,S->_Lewy);
-	else
-	  {
-	    Wezel<Typ>*Temp = new Wezel<Typ>(Wartosc);
-	    Temp->_Rodzic = S;
-	    S->_Lewy = Temp;
-	  }
+	return new Wezel<Typ>(Wartosc);
       }
-    else
+    if(Wartosc > S->_Wartosc)
       {
-	if(S->_Prawy !=NULL)
-	  Dodaj(Wartosc,S->_Prawy);
-	else
-	  {
-	    Wezel<Typ>*Temp = new Wezel<Typ>(Wartosc);
-	    Temp->_Rodzic = S;
-	    S->_Prawy = Temp;
-	  }
+         S->_Prawy = Dodaj(Wartosc,S->_Prawy);
       }
+    else if(Wartosc <S->_Wartosc)
+      {
+         S->_Lewy = Dodaj(Wartosc,S->_Lewy);
+      }
+    
+      return S;
   }
 //**************************************************************************
   void Pokaz(Wezel<Typ> *W)const
@@ -62,16 +54,14 @@ private:
 //**************************************************************************
  const  Wezel<Typ>* Wyszukaj (const Wezel<Typ> *S, const Typ Wartosc)const
   {
-    while(S!=NULL)
-      {
-	if(S ->_Wartosc == Wartosc)
-	  return S;
-	else if( S ->_Wartosc < Wartosc)
-	  return Wyszukaj(S ->_Prawy,Wartosc); 
-	else 
-	  return Wyszukaj(S ->_Lewy,Wartosc);
-      }
-    return NULL;
+    if(S==NULL)
+      return NULL;
+    if(Wartosc > S->_Wartosc)
+      return Wyszukaj(S->_Prawy,Wartosc);
+    else if(Wartosc < S->_Wartosc)
+      return Wyszukaj(S->_Lewy,Wartosc);
+    else
+      return S;
   }
 //**************************************************************************
  void Usun(Wezel<Typ> *&S)
@@ -93,7 +83,7 @@ public:
     _Korzen = NULL;
   }
 //**************************************************************************
-  void Dodaj(const Typ& Wartosc)
+  void Dodaj(const Typ Wartosc)
   {
     if(_Korzen != NULL)
       (Dodaj(Wartosc,_Korzen));
