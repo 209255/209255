@@ -1,0 +1,97 @@
+\hypertarget{class_itest}{\section{Itest Class Reference}
+\label{class_itest}\index{Itest@{Itest}}
+}
+
+
+Modeluje pojecie Interfejsu Testujacego.  
+
+
+
+
+{\ttfamily \#include $<$Itest.\-hh$>$}
+
+Inheritance diagram for Itest\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_itest}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \hyperlink{class_itest_a39d04d2e34c9d7e9606e3f987b683d5c}{\-\_\-\-Wykonaj} (unsigned int n) const =0
+\begin{DoxyCompactList}\small\item\em Metoda Wywolujaca pojedyncza operacje. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_itest_a62ba16b48b1a40321cf8445db6a7b4f4}{\-\_\-\-Zwolnij} ()=0
+\begin{DoxyCompactList}\small\item\em Metoda zwalniajaca pamiec. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_itest_a7565db7c0a4d736f218db9d0f5ceff7a}{\-\_\-\-Zaladuj} (const unsigned int n)=0
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Modeluje pojecie Interfejsu Testujacego. 
+
+Klasa modeluje pojecie abstrakcyjnego interfejsu pozwalajacego wczytac dane do struktury, wykonac pojedyncza operacje testujaca oraz zwolnic zajeta pamiec 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_itest_a39d04d2e34c9d7e9606e3f987b683d5c}{\index{Itest@{Itest}!\-\_\-\-Wykonaj@{\-\_\-\-Wykonaj}}
+\index{\-\_\-\-Wykonaj@{\-\_\-\-Wykonaj}!Itest@{Itest}}
+\subsubsection[{\-\_\-\-Wykonaj}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Itest\-::\-\_\-\-Wykonaj (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{n}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{class_itest_a39d04d2e34c9d7e9606e3f987b683d5c}
+
+
+Metoda Wywolujaca pojedyncza operacje. 
+
+Metoda ma za zadanie wywolac testowana operacje
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em n} & -\/ wielkosc problemu \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \hyperlink{class_graf_ac984753beb24de86d092a08b2cf844f1}{Graf$<$ Typ $>$}.
+
+\hypertarget{class_itest_a7565db7c0a4d736f218db9d0f5ceff7a}{\index{Itest@{Itest}!\-\_\-\-Zaladuj@{\-\_\-\-Zaladuj}}
+\index{\-\_\-\-Zaladuj@{\-\_\-\-Zaladuj}!Itest@{Itest}}
+\subsubsection[{\-\_\-\-Zaladuj}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Itest\-::\-\_\-\-Zaladuj (
+\begin{DoxyParamCaption}
+\item[{const unsigned int}]{n}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{class_itest_a7565db7c0a4d736f218db9d0f5ceff7a}
+Metoda wczytujaca dane
+
+Metoda ma za zadanie wywolac metode umozliwiajaca wczytanie danych do danej struktury
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em n} & -\/ Wielkosc problemu \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \hyperlink{class_graf_adcb32f2e96badaa4d3cccd9de519f5b3}{Graf$<$ Typ $>$}.
+
+\hypertarget{class_itest_a62ba16b48b1a40321cf8445db6a7b4f4}{\index{Itest@{Itest}!\-\_\-\-Zwolnij@{\-\_\-\-Zwolnij}}
+\index{\-\_\-\-Zwolnij@{\-\_\-\-Zwolnij}!Itest@{Itest}}
+\subsubsection[{\-\_\-\-Zwolnij}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Itest\-::\-\_\-\-Zwolnij (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{class_itest_a62ba16b48b1a40321cf8445db6a7b4f4}
+
+
+Metoda zwalniajaca pamiec. 
+
+Metoda ma za zadanie zwolnic pamiec przeznaczona na dana strukture 
+
+Implemented in \hyperlink{class_graf_aaeb5adbe10a1a4fafdd0f62dac5ddbba}{Graf$<$ Typ $>$}.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/bartolomeo/209255/prj/inc/\hyperlink{_itest_8hh}{Itest.\-hh}\end{DoxyCompactItemize}

@@ -1,0 +1,190 @@
+\hypertarget{class_lista}{\section{Lista$<$ Typ $>$ Class Template Reference}
+\label{class_lista}\index{Lista$<$ Typ $>$@{Lista$<$ Typ $>$}}
+}
+
+
+{\ttfamily \#include $<$Lista.\-hh$>$}
+
+Inheritance diagram for Lista$<$ Typ $>$\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_lista}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct_lista_1_1_wezel}{Wezel}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_lista_a5969ea939160694d8eea3cff3ac34cb8}{\-\_\-\-Push} (Typ Wart, unsigned int Poz)
+\begin{DoxyCompactList}\small\item\em Metoda dodajaca \hyperlink{struct_lista_1_1_wezel}{Wezel}. \end{DoxyCompactList}\item 
+Typ \hyperlink{class_lista_a515f4dd7a4ffdfb2fdc12a5fa28e97a4}{\-\_\-\-Pop} (unsigned int Pozycja)
+\begin{DoxyCompactList}\small\item\em Metoda usuwajaca \hyperlink{struct_lista_1_1_wezel}{Wezel}. \end{DoxyCompactList}\item 
+unsigned int \hyperlink{class_lista_a4fb94c2a9d576a4a32acd1e63f339d38}{\-\_\-\-Rozmiar} () const 
+\begin{DoxyCompactList}\small\item\em Metoda informujaca o ilosci wezlow. \end{DoxyCompactList}\item 
+\hyperlink{class_lista_a674e0e60c11e301bcfb39ca4a9102f9a}{Lista} ()
+\begin{DoxyCompactList}\small\item\em Konstruktor. \end{DoxyCompactList}\item 
+\hyperlink{class_lista_acfd996dad8df54ffaa389fdcbe04f643}{$\sim$\-Lista} ()
+\begin{DoxyCompactList}\small\item\em Destruktor Usuwa wskaznik. \end{DoxyCompactList}\item 
+void \hyperlink{class_lista_abae4fe58b5a4225b0df8d98caa65db75}{\-\_\-\-Pokaz} () const 
+\begin{DoxyCompactList}\small\item\em Konstruktor Kopiujacy. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_lista_a3ff3e2f58bd3b1d1b11f9ad68948a321}{\-\_\-\-Zwolnij} ()
+\begin{DoxyCompactList}\small\item\em Metoda zwalniajaca pamiec zajeta przez struktre. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{struct_lista_1_1_wezel}{Wezel} $\ast$ \hyperlink{class_lista_a771f55b84b2b9b3bee3fd68db71e273a}{Glowa}
+\begin{DoxyCompactList}\small\item\em Pole klasy \hyperlink{class_lista}{Lista} Wskaznik na nowo dodany \hyperlink{struct_lista_1_1_wezel}{Wezel}. \end{DoxyCompactList}\item 
+unsigned int \hyperlink{class_lista_a8b2341ebf8c4591c96650e68c1b7548b}{\-\_\-\-Ilosc}
+\begin{DoxyCompactList}\small\item\em Pole klasy \hyperlink{class_lista}{Lista} Pole przechowuje bierzaca ilosc elementow listy. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_lista_a674e0e60c11e301bcfb39ca4a9102f9a}{\index{Lista@{Lista}!Lista@{Lista}}
+\index{Lista@{Lista}!Lista@{Lista}}
+\subsubsection[{Lista}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Typ $>$ {\bf Lista}$<$ Typ $>$\-::{\bf Lista} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_lista_a674e0e60c11e301bcfb39ca4a9102f9a}
+
+
+Konstruktor. 
+
+Konstruktor ustawia wskaznik na N\-U\-L\-L i zeruje ilosc wezlow listy \hypertarget{class_lista_acfd996dad8df54ffaa389fdcbe04f643}{\index{Lista@{Lista}!$\sim$\-Lista@{$\sim$\-Lista}}
+\index{$\sim$\-Lista@{$\sim$\-Lista}!Lista@{Lista}}
+\subsubsection[{$\sim$\-Lista}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Typ $>$ {\bf Lista}$<$ Typ $>$\-::$\sim${\bf Lista} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_lista_acfd996dad8df54ffaa389fdcbe04f643}
+
+
+Destruktor Usuwa wskaznik. 
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_lista_abae4fe58b5a4225b0df8d98caa65db75}{\index{Lista@{Lista}!\-\_\-\-Pokaz@{\-\_\-\-Pokaz}}
+\index{\-\_\-\-Pokaz@{\-\_\-\-Pokaz}!Lista@{Lista}}
+\subsubsection[{\-\_\-\-Pokaz}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Typ $>$ void {\bf Lista}$<$ Typ $>$\-::\-\_\-\-Pokaz (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{class_lista_abae4fe58b5a4225b0df8d98caa65db75}
+
+
+Konstruktor Kopiujacy. 
+
+Metoda wyswietlajaca elementy Listy
+
+Metoda ma za zadanie wyswietlic wszsytkie warotsci znajdujace sie na Liscie 
+
+Implements \hyperlink{class_struktury_a9a4290d332a6a613f92d4d4bfe2577ae}{Struktury$<$ Typ $>$}.
+
+\hypertarget{class_lista_a515f4dd7a4ffdfb2fdc12a5fa28e97a4}{\index{Lista@{Lista}!\-\_\-\-Pop@{\-\_\-\-Pop}}
+\index{\-\_\-\-Pop@{\-\_\-\-Pop}!Lista@{Lista}}
+\subsubsection[{\-\_\-\-Pop}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Typ $>$ Typ {\bf Lista}$<$ Typ $>$\-::\-\_\-\-Pop (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{Pozycja}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{class_lista_a515f4dd7a4ffdfb2fdc12a5fa28e97a4}
+
+
+Metoda usuwajaca \hyperlink{struct_lista_1_1_wezel}{Wezel}. 
+
+Metoda ma za zadanie usunac wezel zgodny z argumentem metody \hyperlink{struct_lista_1_1_wezel}{Wezel} zosatnie usuniety, a sasiednie elementy zostana polaczaone wskazniekiem
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em Pozycja} & -\/ Numer Wezla ktory zostanie usuniety \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{class_struktury_a536345360bdb841d5462b578fe758b73}{Struktury$<$ Typ $>$}.
+
+\hypertarget{class_lista_a5969ea939160694d8eea3cff3ac34cb8}{\index{Lista@{Lista}!\-\_\-\-Push@{\-\_\-\-Push}}
+\index{\-\_\-\-Push@{\-\_\-\-Push}!Lista@{Lista}}
+\subsubsection[{\-\_\-\-Push}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Typ $>$ void {\bf Lista}$<$ Typ $>$\-::\-\_\-\-Push (
+\begin{DoxyParamCaption}
+\item[{Typ}]{Wart, }
+\item[{unsigned int}]{Poz}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{class_lista_a5969ea939160694d8eea3cff3ac34cb8}
+
+
+Metoda dodajaca \hyperlink{struct_lista_1_1_wezel}{Wezel}. 
+
+Metoda ma za zadanie dodac element do listy w zaleznosci od argumentu miejscu i usatwic wartosc zadana przez argument 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em wart} & -\/ Wartosc jaka zostana dodana do Wezla \\
+\hline
+\mbox{\tt in}  & {\em poz} & -\/ Pozycja w ktorej zosatnie dodany \hyperlink{struct_lista_1_1_wezel}{Wezel} \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{class_struktury_aac09c019a75dd7bfda2f313733300c4c}{Struktury$<$ Typ $>$}.
+
+\hypertarget{class_lista_a4fb94c2a9d576a4a32acd1e63f339d38}{\index{Lista@{Lista}!\-\_\-\-Rozmiar@{\-\_\-\-Rozmiar}}
+\index{\-\_\-\-Rozmiar@{\-\_\-\-Rozmiar}!Lista@{Lista}}
+\subsubsection[{\-\_\-\-Rozmiar}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Typ $>$ unsigned int {\bf Lista}$<$ Typ $>$\-::\-\_\-\-Rozmiar (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{class_lista_a4fb94c2a9d576a4a32acd1e63f339d38}
+
+
+Metoda informujaca o ilosci wezlow. 
+
+Metoda zwraca informajce o ilosci aktualnych wezlow listy \begin{DoxyReturn}{Returns}
+-\/ Ilosc elementow listy 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_struktury_a3ed3c70e26cefc242633abc13097acce}{Struktury$<$ Typ $>$}.
+
+\hypertarget{class_lista_a3ff3e2f58bd3b1d1b11f9ad68948a321}{\index{Lista@{Lista}!\-\_\-\-Zwolnij@{\-\_\-\-Zwolnij}}
+\index{\-\_\-\-Zwolnij@{\-\_\-\-Zwolnij}!Lista@{Lista}}
+\subsubsection[{\-\_\-\-Zwolnij}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Typ $>$ void {\bf Lista}$<$ Typ $>$\-::\-\_\-\-Zwolnij (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}, {\ttfamily [virtual]}}}\label{class_lista_a3ff3e2f58bd3b1d1b11f9ad68948a321}
+
+
+Metoda zwalniajaca pamiec zajeta przez struktre. 
+
+Metoda ma za zadanie zwolnij pamiec zajeta przez zaladowane do struktury dane, elementy sa usuwany dopoki wskaznik pokazujacy na poczatek listy nie bedzie wskazywal na N\-U\-L\-L 
+
+Implements \hyperlink{class_struktury_aa85ab98de0f8bb1c257e6d1723d107f5}{Struktury$<$ Typ $>$}.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_lista_a8b2341ebf8c4591c96650e68c1b7548b}{\index{Lista@{Lista}!\-\_\-\-Ilosc@{\-\_\-\-Ilosc}}
+\index{\-\_\-\-Ilosc@{\-\_\-\-Ilosc}!Lista@{Lista}}
+\subsubsection[{\-\_\-\-Ilosc}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Typ $>$ unsigned int {\bf Lista}$<$ Typ $>$\-::\-\_\-\-Ilosc\hspace{0.3cm}{\ttfamily [private]}}}\label{class_lista_a8b2341ebf8c4591c96650e68c1b7548b}
+
+
+Pole klasy \hyperlink{class_lista}{Lista} Pole przechowuje bierzaca ilosc elementow listy. 
+
+\hypertarget{class_lista_a771f55b84b2b9b3bee3fd68db71e273a}{\index{Lista@{Lista}!Glowa@{Glowa}}
+\index{Glowa@{Glowa}!Lista@{Lista}}
+\subsubsection[{Glowa}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Typ $>$ {\bf Wezel}$\ast$ {\bf Lista}$<$ Typ $>$\-::Glowa\hspace{0.3cm}{\ttfamily [private]}}}\label{class_lista_a771f55b84b2b9b3bee3fd68db71e273a}
+
+
+Pole klasy \hyperlink{class_lista}{Lista} Wskaznik na nowo dodany \hyperlink{struct_lista_1_1_wezel}{Wezel}. 
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/bartolomeo/209255/prj/inc/\hyperlink{_lista_8hh}{Lista.\-hh}\end{DoxyCompactItemize}

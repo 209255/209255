@@ -1,0 +1,209 @@
+\hypertarget{class_kolejka}{\section{Kolejka$<$ Typ $>$ Class Template Reference}
+\label{class_kolejka}\index{Kolejka$<$ Typ $>$@{Kolejka$<$ Typ $>$}}
+}
+
+
+Modeluje pojecie Kolejki.  
+
+
+
+
+{\ttfamily \#include $<$Kolejka.\-hh$>$}
+
+Inheritance diagram for Kolejka$<$ Typ $>$\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_kolejka}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct_kolejka_1_1_wezel}{Wezel}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_kolejka_a832240e4b63012eaa75f915986fdbb40}{Kolejka} ()
+\begin{DoxyCompactList}\small\item\em Konstruktor. \end{DoxyCompactList}\item 
+\hyperlink{class_kolejka_a4fe07cc3d71f815492010dc9bb665c7a}{$\sim$\-Kolejka} ()
+\begin{DoxyCompactList}\small\item\em Destruktor. \end{DoxyCompactList}\item 
+void \hyperlink{class_kolejka_a47121a1d8dd1b45bcf5411ab2d5bc099}{\-\_\-\-Pokaz} () const 
+\begin{DoxyCompactList}\small\item\em Metoda wyswietlajaca elementu Kolejki. \end{DoxyCompactList}\item 
+void \hyperlink{class_kolejka_a215bd2ca4b5db7ec861dfc78ee072858}{\-\_\-\-Push} (Typ k, unsigned int Pozycja=0)
+\begin{DoxyCompactList}\small\item\em Metoda dodajaca nowy \hyperlink{struct_kolejka_1_1_wezel}{Wezel}. \end{DoxyCompactList}\item 
+Typ \hyperlink{class_kolejka_ab26939041331d337b398819e3cc4443f}{\-\_\-\-Pop} (unsigned int Pozycja=0)
+\begin{DoxyCompactList}\small\item\em Metda usuwajaca wezel. \end{DoxyCompactList}\item 
+unsigned int \hyperlink{class_kolejka_ae76fad7ebe4fbc2bb7900e129a3677bc}{\-\_\-\-Rozmiar} () const 
+\begin{DoxyCompactList}\small\item\em Metoda informujaca o obecnej ilosci Wezlow. \end{DoxyCompactList}\item 
+bool \hyperlink{class_kolejka_aaeff23686afd067382547a9b37cb0187}{Czy\-Pusta} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_kolejka_a607af93211b5e5e31123c633e1f1fcf2}{\-\_\-\-Zwolnij} ()
+\begin{DoxyCompactList}\small\item\em Metoda zwalniajaca pamiec zajeta przez struktre. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{struct_kolejka_1_1_wezel}{Wezel} $\ast$ \hyperlink{class_kolejka_ad033655c575e128005d38099c10cfe89}{\-\_\-\-Pierwszy}
+\begin{DoxyCompactList}\small\item\em Pole klasy \hyperlink{class_kolejka}{Kolejka}. \end{DoxyCompactList}\item 
+\hyperlink{struct_kolejka_1_1_wezel}{Wezel} $\ast$ \hyperlink{class_kolejka_a0a7afd58e759661de14dbf9bab1a9d03}{\-\_\-\-Ostatni}
+\begin{DoxyCompactList}\small\item\em Pole klasy \hyperlink{class_kolejka}{Kolejka}. \end{DoxyCompactList}\item 
+unsigned int \hyperlink{class_kolejka_a803854da70e64a643364cac86c173dd6}{\-\_\-\-Ilosc}
+\begin{DoxyCompactList}\small\item\em Pole klasy \hyperlink{class_kolejka}{Kolejka}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class Typ$>$class Kolejka$<$ Typ $>$}
+
+Modeluje pojecie Kolejki. 
+
+Klasa modeluje pojecie kolejki, dodajac nowy element na jej koniec i sciagajac pierwszy doddany element 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_kolejka_a832240e4b63012eaa75f915986fdbb40}{\index{Kolejka@{Kolejka}!Kolejka@{Kolejka}}
+\index{Kolejka@{Kolejka}!Kolejka@{Kolejka}}
+\subsubsection[{Kolejka}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Typ $>$ {\bf Kolejka}$<$ Typ $>$\-::{\bf Kolejka} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_kolejka_a832240e4b63012eaa75f915986fdbb40}
+
+
+Konstruktor. 
+
+Ustawia wskazniki na N\-U\-L\-L oraz zeruje ilosc elementow przy tworzeniu obiektow danej klasy \hypertarget{class_kolejka_a4fe07cc3d71f815492010dc9bb665c7a}{\index{Kolejka@{Kolejka}!$\sim$\-Kolejka@{$\sim$\-Kolejka}}
+\index{$\sim$\-Kolejka@{$\sim$\-Kolejka}!Kolejka@{Kolejka}}
+\subsubsection[{$\sim$\-Kolejka}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Typ $>$ {\bf Kolejka}$<$ Typ $>$\-::$\sim${\bf Kolejka} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_kolejka_a4fe07cc3d71f815492010dc9bb665c7a}
+
+
+Destruktor. 
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_kolejka_a47121a1d8dd1b45bcf5411ab2d5bc099}{\index{Kolejka@{Kolejka}!\-\_\-\-Pokaz@{\-\_\-\-Pokaz}}
+\index{\-\_\-\-Pokaz@{\-\_\-\-Pokaz}!Kolejka@{Kolejka}}
+\subsubsection[{\-\_\-\-Pokaz}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Typ $>$ void {\bf Kolejka}$<$ Typ $>$\-::\-\_\-\-Pokaz (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{class_kolejka_a47121a1d8dd1b45bcf5411ab2d5bc099}
+
+
+Metoda wyswietlajaca elementu Kolejki. 
+
+Metoda ma za zadanie wyswietlic wszsytkie warotsci znajdujace sie w kolejce 
+
+Implements \hyperlink{class_struktury_a9a4290d332a6a613f92d4d4bfe2577ae}{Struktury$<$ Typ $>$}.
+
+\hypertarget{class_kolejka_ab26939041331d337b398819e3cc4443f}{\index{Kolejka@{Kolejka}!\-\_\-\-Pop@{\-\_\-\-Pop}}
+\index{\-\_\-\-Pop@{\-\_\-\-Pop}!Kolejka@{Kolejka}}
+\subsubsection[{\-\_\-\-Pop}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Typ $>$ Typ {\bf Kolejka}$<$ Typ $>$\-::\-\_\-\-Pop (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{Pozycja = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{class_kolejka_ab26939041331d337b398819e3cc4443f}
+
+
+Metda usuwajaca wezel. 
+
+Metoda ma za zadanie usunac pierwszy dodany element z kolejki oraz ustawic wskaznik przed ostatniego elementu na N\-U\-L\-L 
+
+Implements \hyperlink{class_struktury_a536345360bdb841d5462b578fe758b73}{Struktury$<$ Typ $>$}.
+
+\hypertarget{class_kolejka_a215bd2ca4b5db7ec861dfc78ee072858}{\index{Kolejka@{Kolejka}!\-\_\-\-Push@{\-\_\-\-Push}}
+\index{\-\_\-\-Push@{\-\_\-\-Push}!Kolejka@{Kolejka}}
+\subsubsection[{\-\_\-\-Push}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Typ $>$ void {\bf Kolejka}$<$ Typ $>$\-::\-\_\-\-Push (
+\begin{DoxyParamCaption}
+\item[{Typ}]{k, }
+\item[{unsigned int}]{Pozycja = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{class_kolejka_a215bd2ca4b5db7ec861dfc78ee072858}
+
+
+Metoda dodajaca nowy \hyperlink{struct_kolejka_1_1_wezel}{Wezel}. 
+
+Metoda ma za zadanie dodac nowy wezel na koniec kolejki, umiescic w nim warosc zadana jako argument oraz pokazac wskaznkiem na ostatni \hyperlink{struct_kolejka_1_1_wezel}{Wezel} przed dodaniem nowego Wezla 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em k} & -\/ Wartosc ktora zostanie umieszczona w odpowiednim polu Wezla \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{class_struktury_aac09c019a75dd7bfda2f313733300c4c}{Struktury$<$ Typ $>$}.
+
+\hypertarget{class_kolejka_ae76fad7ebe4fbc2bb7900e129a3677bc}{\index{Kolejka@{Kolejka}!\-\_\-\-Rozmiar@{\-\_\-\-Rozmiar}}
+\index{\-\_\-\-Rozmiar@{\-\_\-\-Rozmiar}!Kolejka@{Kolejka}}
+\subsubsection[{\-\_\-\-Rozmiar}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Typ $>$ unsigned int {\bf Kolejka}$<$ Typ $>$\-::\-\_\-\-Rozmiar (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{class_kolejka_ae76fad7ebe4fbc2bb7900e129a3677bc}
+
+
+Metoda informujaca o obecnej ilosci Wezlow. 
+
+Metoda zwraca informacje o ilosci obecnie znajdujacych sie elementow w kolejce \begin{DoxyReturn}{Returns}
+-\/ Zwraca ilosc elementow w kolejce 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_struktury_a3ed3c70e26cefc242633abc13097acce}{Struktury$<$ Typ $>$}.
+
+\hypertarget{class_kolejka_a607af93211b5e5e31123c633e1f1fcf2}{\index{Kolejka@{Kolejka}!\-\_\-\-Zwolnij@{\-\_\-\-Zwolnij}}
+\index{\-\_\-\-Zwolnij@{\-\_\-\-Zwolnij}!Kolejka@{Kolejka}}
+\subsubsection[{\-\_\-\-Zwolnij}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Typ $>$ void {\bf Kolejka}$<$ Typ $>$\-::\-\_\-\-Zwolnij (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}, {\ttfamily [virtual]}}}\label{class_kolejka_a607af93211b5e5e31123c633e1f1fcf2}
+
+
+Metoda zwalniajaca pamiec zajeta przez struktre. 
+
+Metoda ma za zadanie zwolnij pamiec zajeta przez zaladowane do struktury dane, elementy sa usuwany dopoki wskaznik pokazujacy na poczatek kolejki nie bedzie wskazywal na N\-U\-L\-L 
+
+Implements \hyperlink{class_struktury_aa85ab98de0f8bb1c257e6d1723d107f5}{Struktury$<$ Typ $>$}.
+
+\hypertarget{class_kolejka_aaeff23686afd067382547a9b37cb0187}{\index{Kolejka@{Kolejka}!Czy\-Pusta@{Czy\-Pusta}}
+\index{Czy\-Pusta@{Czy\-Pusta}!Kolejka@{Kolejka}}
+\subsubsection[{Czy\-Pusta}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Typ $>$ bool {\bf Kolejka}$<$ Typ $>$\-::Czy\-Pusta (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_kolejka_aaeff23686afd067382547a9b37cb0187}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_kolejka_a803854da70e64a643364cac86c173dd6}{\index{Kolejka@{Kolejka}!\-\_\-\-Ilosc@{\-\_\-\-Ilosc}}
+\index{\-\_\-\-Ilosc@{\-\_\-\-Ilosc}!Kolejka@{Kolejka}}
+\subsubsection[{\-\_\-\-Ilosc}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Typ $>$ unsigned int {\bf Kolejka}$<$ Typ $>$\-::\-\_\-\-Ilosc\hspace{0.3cm}{\ttfamily [private]}}}\label{class_kolejka_a803854da70e64a643364cac86c173dd6}
+
+
+Pole klasy \hyperlink{class_kolejka}{Kolejka}. 
+
+Pole przechowuje inrofmracje o ilosci obecnie znajdujacych sie elementow w kolejce \hypertarget{class_kolejka_a0a7afd58e759661de14dbf9bab1a9d03}{\index{Kolejka@{Kolejka}!\-\_\-\-Ostatni@{\-\_\-\-Ostatni}}
+\index{\-\_\-\-Ostatni@{\-\_\-\-Ostatni}!Kolejka@{Kolejka}}
+\subsubsection[{\-\_\-\-Ostatni}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Typ $>$ {\bf Wezel}$\ast$ {\bf Kolejka}$<$ Typ $>$\-::\-\_\-\-Ostatni\hspace{0.3cm}{\ttfamily [private]}}}\label{class_kolejka_a0a7afd58e759661de14dbf9bab1a9d03}
+
+
+Pole klasy \hyperlink{class_kolejka}{Kolejka}. 
+
+Pole jest wskaznikiem na ostatni element kolejki \hypertarget{class_kolejka_ad033655c575e128005d38099c10cfe89}{\index{Kolejka@{Kolejka}!\-\_\-\-Pierwszy@{\-\_\-\-Pierwszy}}
+\index{\-\_\-\-Pierwszy@{\-\_\-\-Pierwszy}!Kolejka@{Kolejka}}
+\subsubsection[{\-\_\-\-Pierwszy}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Typ $>$ {\bf Wezel}$\ast$ {\bf Kolejka}$<$ Typ $>$\-::\-\_\-\-Pierwszy\hspace{0.3cm}{\ttfamily [private]}}}\label{class_kolejka_ad033655c575e128005d38099c10cfe89}
+
+
+Pole klasy \hyperlink{class_kolejka}{Kolejka}. 
+
+Pole jest wskaznikiem na pierwszy element kolejki 
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/bartolomeo/209255/prj/inc/\hyperlink{_kolejka_8hh}{Kolejka.\-hh}\end{DoxyCompactItemize}

@@ -1,0 +1,354 @@
+\hypertarget{class_graf}{\section{Graf$<$ Typ $>$ Class Template Reference}
+\label{class_graf}\index{Graf$<$ Typ $>$@{Graf$<$ Typ $>$}}
+}
+
+
+Modeluje pojecie grafu.  
+
+
+
+
+{\ttfamily \#include $<$Graf.\-hh$>$}
+
+Inheritance diagram for Graf$<$ Typ $>$\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_graf}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_graf_ac984753beb24de86d092a08b2cf844f1}{\-\_\-\-Wykonaj} (unsigned int n) const 
+\begin{DoxyCompactList}\small\item\em Metoda wywolujaca testowany algorytm. \end{DoxyCompactList}\item 
+void \hyperlink{class_graf_aaeb5adbe10a1a4fafdd0f62dac5ddbba}{\-\_\-\-Zwolnij} ()
+\begin{DoxyCompactList}\small\item\em Metoda zwalniajaca pamiec. \end{DoxyCompactList}\item 
+void \hyperlink{class_graf_adcb32f2e96badaa4d3cccd9de519f5b3}{\-\_\-\-Zaladuj} (unsigned int n)
+\begin{DoxyCompactList}\small\item\em Metoda ladujaca dane. \end{DoxyCompactList}\item 
+\hyperlink{class_graf_a95213c95392b1b99f83fcf89be540230}{Graf} (unsigned int n)
+\begin{DoxyCompactList}\small\item\em Konstruktor obiektu. \end{DoxyCompactList}\item 
+virtual \hyperlink{class_graf_ae738931dd17ef4e133757e76b960fc99}{$\sim$\-Graf} ()
+\begin{DoxyCompactList}\small\item\em Destruktor obiektu. \end{DoxyCompactList}\item 
+void \hyperlink{class_graf_a96466f767c7b1145421cf0c17a532449}{\-\_\-\-Dodaj\-Krawedz} (unsigned int i, unsigned int j)
+\begin{DoxyCompactList}\small\item\em Metoda dodajaca Krawedz. \end{DoxyCompactList}\item 
+void \hyperlink{class_graf_aea242f1a0b19b5768d516f92d224967f}{\-\_\-\-Usun\-Krawedz} (const unsigned int i, const unsigned int j)
+\begin{DoxyCompactList}\small\item\em Metoda usuwajaca polaczenie. \end{DoxyCompactList}\item 
+bool \hyperlink{class_graf_afa31377701d46bd692a6e430c6965d4b}{\-\_\-\-Czy\-Krawedz} (const unsigned int i, const unsigned int j) const 
+\begin{DoxyCompactList}\small\item\em Metoda sprawdzajaca status polaczenia. \end{DoxyCompactList}\item 
+void \hyperlink{class_graf_a1cef49af91f2d8b6f157e9dd06066d60}{B\-F\-S} (const int i, const int Szukany) const 
+\begin{DoxyCompactList}\small\item\em Algorytm B\-F\-S. \end{DoxyCompactList}\item 
+void \hyperlink{class_graf_a54e531a5abc04c9aaff81bd76aec5591}{D\-F\-S} (const int x, const int Wymagany) const 
+\begin{DoxyCompactList}\small\item\em Algorytm B\-F\-S. \end{DoxyCompactList}\item 
+void \hyperlink{class_graf_ae4fa759125334d0361226c4fa2dbf35e}{\-\_\-\-Dodaj\-Wartosc\-Wierzcholka} (const unsigned int indeks, const Typ Wartosc)
+\begin{DoxyCompactList}\small\item\em Metoda dodajaca wartosc do danego wierzcholka. \end{DoxyCompactList}\item 
+Typ \hyperlink{class_graf_a9198e4a7a0328ab5275713b4141fbb30}{\-\_\-\-Zwroc\-Wartosc\-Wierzcholka} (const unsigned int indeks) const 
+\begin{DoxyCompactList}\small\item\em Metoda zwracajaca wartosc z wierzcholka. \end{DoxyCompactList}\item 
+unsigned int \hyperlink{class_graf_adf42e78308217f1abbb79818abd04cdf}{\-\_\-\-Ilosc\-Krawedzi} () const 
+\begin{DoxyCompactList}\small\item\em Metoda zwracaja ilsoc krawedzi. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+unsigned int \hyperlink{class_graf_a43104495abdfb73304fccd5a6a2d89c2}{\-\_\-\-V}
+\begin{DoxyCompactList}\small\item\em Pole Klasy \hyperlink{class_graf}{Graf}. \end{DoxyCompactList}\item 
+unsigned int \hyperlink{class_graf_a7128b0f6457b5524673f93266648ae5b}{\-\_\-\-E}
+\begin{DoxyCompactList}\small\item\em Pole klasy \hyperlink{class_graf}{Graf}. \end{DoxyCompactList}\item 
+bool $\ast$$\ast$ \hyperlink{class_graf_a200828ae79157583b5e674cf8da6a134}{\-\_\-\-E\-Macierz}
+\begin{DoxyCompactList}\small\item\em Pole klasy \hyperlink{class_graf}{Graf}. \end{DoxyCompactList}\item 
+Typ $\ast$ \hyperlink{class_graf_a8f8bb580ab7939c3ca50cc759ec33a89}{\-\_\-\-V\-Macierz}
+\begin{DoxyCompactList}\small\item\em Pole klasy \hyperlink{class_graf}{Graf}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class Typ$>$class Graf$<$ Typ $>$}
+
+Modeluje pojecie grafu. 
+
+Klasa modeluje pojecie Grafu, przedstawionego jako Macierz sasiedztw, ktora przechowuje informacje na temat polaczen miedzy wierzcholkami 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_graf_a95213c95392b1b99f83fcf89be540230}{\index{Graf@{Graf}!Graf@{Graf}}
+\index{Graf@{Graf}!Graf@{Graf}}
+\subsubsection[{Graf}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Typ $>$ {\bf Graf}$<$ Typ $>$\-::{\bf Graf} (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{n}
+\end{DoxyParamCaption}
+)}}\label{class_graf_a95213c95392b1b99f83fcf89be540230}
+
+
+Konstruktor obiektu. 
+
+Konstruktor ma za zadanie zaalokowac pamiec potrzebna dla macerzy sasiedztw i wstepnie wypelnic ja wartosciami false
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em n} & -\/ wielkosc tworzenego grafu \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_graf_ae738931dd17ef4e133757e76b960fc99}{\index{Graf@{Graf}!$\sim$\-Graf@{$\sim$\-Graf}}
+\index{$\sim$\-Graf@{$\sim$\-Graf}!Graf@{Graf}}
+\subsubsection[{$\sim$\-Graf}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Typ $>$ {\bf Graf}$<$ Typ $>$\-::$\sim${\bf Graf} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_graf_ae738931dd17ef4e133757e76b960fc99}
+
+
+Destruktor obiektu. 
+
+Destruktor ma zazadanie uwolnic pamiec przeznaczona na realzizajcje grafu 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_graf_afa31377701d46bd692a6e430c6965d4b}{\index{Graf@{Graf}!\-\_\-\-Czy\-Krawedz@{\-\_\-\-Czy\-Krawedz}}
+\index{\-\_\-\-Czy\-Krawedz@{\-\_\-\-Czy\-Krawedz}!Graf@{Graf}}
+\subsubsection[{\-\_\-\-Czy\-Krawedz}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Typ $>$ bool {\bf Graf}$<$ Typ $>$\-::\-\_\-\-Czy\-Krawedz (
+\begin{DoxyParamCaption}
+\item[{const unsigned int}]{i, }
+\item[{const unsigned int}]{j}
+\end{DoxyParamCaption}
+) const}}\label{class_graf_afa31377701d46bd692a6e430c6965d4b}
+
+
+Metoda sprawdzajaca status polaczenia. 
+
+Metoda ma za zadanie sprawdzic status polaczenia miedzy wierzchokami zadanymi poprzez argument
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em i} & -\/ numer wierzcholka \\
+\hline
+\mbox{\tt in}  & {\em j} & -\/ numer wierzcholka \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_graf_a96466f767c7b1145421cf0c17a532449}{\index{Graf@{Graf}!\-\_\-\-Dodaj\-Krawedz@{\-\_\-\-Dodaj\-Krawedz}}
+\index{\-\_\-\-Dodaj\-Krawedz@{\-\_\-\-Dodaj\-Krawedz}!Graf@{Graf}}
+\subsubsection[{\-\_\-\-Dodaj\-Krawedz}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Typ $>$ void {\bf Graf}$<$ Typ $>$\-::\-\_\-\-Dodaj\-Krawedz (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{i, }
+\item[{unsigned int}]{j}
+\end{DoxyParamCaption}
+)}}\label{class_graf_a96466f767c7b1145421cf0c17a532449}
+
+
+Metoda dodajaca Krawedz. 
+
+Metoda ma za zadanie zmienic status polaczen zadanych poprzez argument wierzcholkow na polaczony
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em i} & -\/ numer wierzcholka,ktory ma zostac polaczony z drugim argumentem \\
+\hline
+\mbox{\tt in}  & {\em j} & -\/ numer wierzcholka, ktory ma zostac polaczony z pierwszym argumentem \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_graf_ae4fa759125334d0361226c4fa2dbf35e}{\index{Graf@{Graf}!\-\_\-\-Dodaj\-Wartosc\-Wierzcholka@{\-\_\-\-Dodaj\-Wartosc\-Wierzcholka}}
+\index{\-\_\-\-Dodaj\-Wartosc\-Wierzcholka@{\-\_\-\-Dodaj\-Wartosc\-Wierzcholka}!Graf@{Graf}}
+\subsubsection[{\-\_\-\-Dodaj\-Wartosc\-Wierzcholka}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Typ $>$ void {\bf Graf}$<$ Typ $>$\-::\-\_\-\-Dodaj\-Wartosc\-Wierzcholka (
+\begin{DoxyParamCaption}
+\item[{const unsigned int}]{indeks, }
+\item[{const Typ}]{Wartosc}
+\end{DoxyParamCaption}
+)}}\label{class_graf_ae4fa759125334d0361226c4fa2dbf35e}
+
+
+Metoda dodajaca wartosc do danego wierzcholka. 
+
+Metoda ma za zadanie dodac wartosc do danego wierzcholka
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em indeks} & -\/ Numer wierzcholka do ktorego ma zostac dodana wartosc \\
+\hline
+\mbox{\tt in}  & {\em Wartosc} & -\/ Wartosc,ktora ma zostac dodana do wierzcholka \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_graf_adf42e78308217f1abbb79818abd04cdf}{\index{Graf@{Graf}!\-\_\-\-Ilosc\-Krawedzi@{\-\_\-\-Ilosc\-Krawedzi}}
+\index{\-\_\-\-Ilosc\-Krawedzi@{\-\_\-\-Ilosc\-Krawedzi}!Graf@{Graf}}
+\subsubsection[{\-\_\-\-Ilosc\-Krawedzi}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Typ $>$ unsigned int {\bf Graf}$<$ Typ $>$\-::\-\_\-\-Ilosc\-Krawedzi (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{class_graf_adf42e78308217f1abbb79818abd04cdf}
+
+
+Metoda zwracaja ilsoc krawedzi. 
+
+Metoda ma za zadanie zwrocic ilosc krawedzi jaka zostala stworzona w zamodelowanym grafie
+
+\begin{DoxyReturn}{Returns}
+Ilosc krawedzi grafu 
+\end{DoxyReturn}
+\hypertarget{class_graf_aea242f1a0b19b5768d516f92d224967f}{\index{Graf@{Graf}!\-\_\-\-Usun\-Krawedz@{\-\_\-\-Usun\-Krawedz}}
+\index{\-\_\-\-Usun\-Krawedz@{\-\_\-\-Usun\-Krawedz}!Graf@{Graf}}
+\subsubsection[{\-\_\-\-Usun\-Krawedz}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Typ $>$ void {\bf Graf}$<$ Typ $>$\-::\-\_\-\-Usun\-Krawedz (
+\begin{DoxyParamCaption}
+\item[{const unsigned int}]{i, }
+\item[{const unsigned int}]{j}
+\end{DoxyParamCaption}
+)}}\label{class_graf_aea242f1a0b19b5768d516f92d224967f}
+
+
+Metoda usuwajaca polaczenie. 
+
+Metoda ma zadanie usunac polaczenie miedzy wierzcholkami
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em i} & -\/ numer wierzcholka \\
+\hline
+\mbox{\tt in}  & {\em j} & -\/ numer wierzcholka \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_graf_ac984753beb24de86d092a08b2cf844f1}{\index{Graf@{Graf}!\-\_\-\-Wykonaj@{\-\_\-\-Wykonaj}}
+\index{\-\_\-\-Wykonaj@{\-\_\-\-Wykonaj}!Graf@{Graf}}
+\subsubsection[{\-\_\-\-Wykonaj}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Typ $>$ void {\bf Graf}$<$ Typ $>$\-::\-\_\-\-Wykonaj (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{n}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_graf_ac984753beb24de86d092a08b2cf844f1}
+
+
+Metoda wywolujaca testowany algorytm. 
+
+Metoda ma za zdanie wywolac zaimplementowany dla tej struktury danych algorytm
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em n} & -\/ Wielkosc problemu \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{class_itest_a39d04d2e34c9d7e9606e3f987b683d5c}{Itest}.
+
+\hypertarget{class_graf_adcb32f2e96badaa4d3cccd9de519f5b3}{\index{Graf@{Graf}!\-\_\-\-Zaladuj@{\-\_\-\-Zaladuj}}
+\index{\-\_\-\-Zaladuj@{\-\_\-\-Zaladuj}!Graf@{Graf}}
+\subsubsection[{\-\_\-\-Zaladuj}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Typ $>$ void {\bf Graf}$<$ Typ $>$\-::\-\_\-\-Zaladuj (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{n}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_graf_adcb32f2e96badaa4d3cccd9de519f5b3}
+
+
+Metoda ladujaca dane. 
+
+Metoda ma za zadanie wypelnic macierz sasiedztw informacjami o typie polaczen miedzy wierzcholkami 
+
+Implements \hyperlink{class_itest_a7565db7c0a4d736f218db9d0f5ceff7a}{Itest}.
+
+\hypertarget{class_graf_aaeb5adbe10a1a4fafdd0f62dac5ddbba}{\index{Graf@{Graf}!\-\_\-\-Zwolnij@{\-\_\-\-Zwolnij}}
+\index{\-\_\-\-Zwolnij@{\-\_\-\-Zwolnij}!Graf@{Graf}}
+\subsubsection[{\-\_\-\-Zwolnij}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Typ $>$ void {\bf Graf}$<$ Typ $>$\-::\-\_\-\-Zwolnij (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_graf_aaeb5adbe10a1a4fafdd0f62dac5ddbba}
+
+
+Metoda zwalniajaca pamiec. 
+
+Metoda ma za zadanie zwolnic pamiec, wykorzystana przez graf 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em n} & -\/ Wielkosc problemu \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{class_itest_a62ba16b48b1a40321cf8445db6a7b4f4}{Itest}.
+
+\hypertarget{class_graf_a9198e4a7a0328ab5275713b4141fbb30}{\index{Graf@{Graf}!\-\_\-\-Zwroc\-Wartosc\-Wierzcholka@{\-\_\-\-Zwroc\-Wartosc\-Wierzcholka}}
+\index{\-\_\-\-Zwroc\-Wartosc\-Wierzcholka@{\-\_\-\-Zwroc\-Wartosc\-Wierzcholka}!Graf@{Graf}}
+\subsubsection[{\-\_\-\-Zwroc\-Wartosc\-Wierzcholka}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Typ $>$ Typ {\bf Graf}$<$ Typ $>$\-::\-\_\-\-Zwroc\-Wartosc\-Wierzcholka (
+\begin{DoxyParamCaption}
+\item[{const unsigned int}]{indeks}
+\end{DoxyParamCaption}
+) const}}\label{class_graf_a9198e4a7a0328ab5275713b4141fbb30}
+
+
+Metoda zwracajaca wartosc z wierzcholka. 
+
+Metoda ma za zadanie zwrocic wartosc z danego wierzcholka
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em indeks} & -\/ Indeks wierzcholka z ktorego ma zostac odczytana wartosc \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_graf_a1cef49af91f2d8b6f157e9dd06066d60}{\index{Graf@{Graf}!B\-F\-S@{B\-F\-S}}
+\index{B\-F\-S@{B\-F\-S}!Graf@{Graf}}
+\subsubsection[{B\-F\-S}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Typ $>$ void {\bf Graf}$<$ Typ $>$\-::B\-F\-S (
+\begin{DoxyParamCaption}
+\item[{const int}]{i, }
+\item[{const int}]{Szukany}
+\end{DoxyParamCaption}
+) const}}\label{class_graf_a1cef49af91f2d8b6f157e9dd06066d60}
+
+
+Algorytm B\-F\-S. 
+
+Implemetacja algorytmu przechodzenia grafu wszerz, polegajacego na przechodzeniu grafu od zadanego wierzcholka i odwiedzeniu wszystkich dostepnych z niego wierzcholkow.\-Rezultatem jest drzewo przeszukiwania wszerz o korzeniu rownemu wierzcholkowi od ktorego rozpoczely sie poszukiwania
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em i} & -\/ Poczatkowy wierzcholek \\
+\hline
+\mbox{\tt in}  & {\em Szukany} & -\/ Wierzcholek koncowy \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_graf_a54e531a5abc04c9aaff81bd76aec5591}{\index{Graf@{Graf}!D\-F\-S@{D\-F\-S}}
+\index{D\-F\-S@{D\-F\-S}!Graf@{Graf}}
+\subsubsection[{D\-F\-S}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Typ $>$ void {\bf Graf}$<$ Typ $>$\-::D\-F\-S (
+\begin{DoxyParamCaption}
+\item[{const int}]{x, }
+\item[{const int}]{Wymagany}
+\end{DoxyParamCaption}
+) const}}\label{class_graf_a54e531a5abc04c9aaff81bd76aec5591}
+
+
+Algorytm B\-F\-S. 
+
+Implementacja przechodzenia grafu w glab, polegajaca na badaniu wszystkich krawedzi wychodzacych z podanego wierzcholka. Po zbadaniu wszytskich krawedzi wychodzacych z danego wierzcholka algorytm powraca do wierzcholka z ktorego dany wierzcholek zostal odwiedzony
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em i} & -\/ Wierzcholek od ktorego zaczyna sie przechodzenie \\
+\hline
+\mbox{\tt in}  & {\em Szukany} & -\/ Wierzcholek na ktorym zakonczone zostaje przechodzenie grafu \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_graf_a7128b0f6457b5524673f93266648ae5b}{\index{Graf@{Graf}!\-\_\-\-E@{\-\_\-\-E}}
+\index{\-\_\-\-E@{\-\_\-\-E}!Graf@{Graf}}
+\subsubsection[{\-\_\-\-E}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Typ $>$ unsigned int {\bf Graf}$<$ Typ $>$\-::\-\_\-\-E\hspace{0.3cm}{\ttfamily [private]}}}\label{class_graf_a7128b0f6457b5524673f93266648ae5b}
+
+
+Pole klasy \hyperlink{class_graf}{Graf}. 
+
+Pole zawiera informacje o ilosci krawedzi \hypertarget{class_graf_a200828ae79157583b5e674cf8da6a134}{\index{Graf@{Graf}!\-\_\-\-E\-Macierz@{\-\_\-\-E\-Macierz}}
+\index{\-\_\-\-E\-Macierz@{\-\_\-\-E\-Macierz}!Graf@{Graf}}
+\subsubsection[{\-\_\-\-E\-Macierz}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Typ $>$ bool$\ast$$\ast$ {\bf Graf}$<$ Typ $>$\-::\-\_\-\-E\-Macierz\hspace{0.3cm}{\ttfamily [private]}}}\label{class_graf_a200828ae79157583b5e674cf8da6a134}
+
+
+Pole klasy \hyperlink{class_graf}{Graf}. 
+
+Pole zawiera informace o polaczeniach miedzy wierzcholkami w grafie \hypertarget{class_graf_a43104495abdfb73304fccd5a6a2d89c2}{\index{Graf@{Graf}!\-\_\-\-V@{\-\_\-\-V}}
+\index{\-\_\-\-V@{\-\_\-\-V}!Graf@{Graf}}
+\subsubsection[{\-\_\-\-V}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Typ $>$ unsigned int {\bf Graf}$<$ Typ $>$\-::\-\_\-\-V\hspace{0.3cm}{\ttfamily [private]}}}\label{class_graf_a43104495abdfb73304fccd5a6a2d89c2}
+
+
+Pole Klasy \hyperlink{class_graf}{Graf}. 
+
+Pole zawiera informacje o ilosci wierzcholkow \hypertarget{class_graf_a8f8bb580ab7939c3ca50cc759ec33a89}{\index{Graf@{Graf}!\-\_\-\-V\-Macierz@{\-\_\-\-V\-Macierz}}
+\index{\-\_\-\-V\-Macierz@{\-\_\-\-V\-Macierz}!Graf@{Graf}}
+\subsubsection[{\-\_\-\-V\-Macierz}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Typ $>$ Typ$\ast$ {\bf Graf}$<$ Typ $>$\-::\-\_\-\-V\-Macierz\hspace{0.3cm}{\ttfamily [private]}}}\label{class_graf_a8f8bb580ab7939c3ca50cc759ec33a89}
+
+
+Pole klasy \hyperlink{class_graf}{Graf}. 
+
+Pole przechowuje informacje zapisana w danym wierzcholku 
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+/home/bartolomeo/209255/prj/inc/\hyperlink{_graf_8hh}{Graf.\-hh}\item 
+/home/bartolomeo/209255/prj/src/\hyperlink{_graf_8cpp}{Graf.\-cpp}\end{DoxyCompactItemize}

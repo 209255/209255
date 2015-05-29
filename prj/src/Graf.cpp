@@ -1,20 +1,29 @@
-#include "Graf.hh"
-using namespace std;
+//*****************************************************************
+/*!
+ *\file Zawiera definicje metod klasy Graf
+ */
+//*****************************************************************
 
 //*****************************************************************
-Graf::Graf(unsigned int k):
+template <class Typ>
+Graf<Typ>::Graf(unsigned int k):
   _V(k),_E(0)
 {
-  _EMacierz = new unsigned int *[_V];
+  _EMacierz = new bool *[_V];
   for(unsigned int i = 0; i < _V; ++i)
     {
-      _EMacierz[i] = new unsigned int [_V];
+      _EMacierz[i] = new bool [_V];
       for(unsigned int j = 0; j < _V; ++j)
-	_EMacierz[i][j] = 0;
+	_EMacierz[i][j] = false;
     }
+  
+  _VMacierz = new Typ[_V];
+  for(unsigned int i = 0; i < _V; ++i)
+    _VMacierz[i] = 0;
 }
 //*****************************************************************
-Graf::~Graf()
+template <class Typ>
+Graf<Typ>::~Graf()
 {
   for(unsigned int i = 0; i < _V; ++i)
     delete []_EMacierz[i];
@@ -22,44 +31,46 @@ Graf::~Graf()
   
 }
 //******************************************************************
-void Graf::_DodajKrawedz(unsigned int i, unsigned int j)
+template <class Typ>
+void Graf<Typ>::_DodajKrawedz(const unsigned int i, const unsigned int j)
 {
-  cout <<"i: " << i << "j: " << j <<endl;
+  // cout <<"i: " << i << "j: " << j <<endl;
   if(!(i <= _V && j <= _V)) throw"Brak elementu";
-  _EMacierz[j-1][i-1] = _EMacierz[i-1][j-1] = 1;
+  _EMacierz[j-1][i-1] = _EMacierz[i-1][j-1] = true;
   ++_E;
 }
 //******************************************************************
-void Graf::_UsunKrawedz(const unsigned int i,const unsigned int j)
+template <class Typ>
+void Graf<Typ>::_UsunKrawedz(const unsigned int i,const unsigned int j)
 {
  if(!(i <= _V && j <= _V)) throw"Brak elementu";
   _EMacierz[i-1][j-1] = 0;
   --_E;
 }
 //******************************************************************
-bool Graf::_CzyKrawedz(const unsigned int i,const unsigned int j)const
+template <class Typ>
+bool Graf<Typ>::_CzyKrawedz(const unsigned int i,const unsigned int j)const
 {
-
-  return(_EMacierz[i-1][j-1] == 1);
-   
+  return(_EMacierz[i-1][j-1] == true);
 }
 //******************************************************************
-void Graf::BFS(const int W,const int Szukany)const
+template <class Typ>
+void Graf<Typ>::BFS(const int W,const int Szukany)const
 {
-  cout << Szukany<< endl;
+  //cout << Szukany<< endl;
   Kolejka<int> K;
   bool *Odwiedzone = new bool[_V+1];
   for(unsigned int i  = 1; i <= _V; ++i)
     Odwiedzone[i] = false;
   K._Push(W,K._Rozmiar());
   Odwiedzone[W] = true;
+  //cout << W << " : " << endl;
   if(W == Szukany) return;
-  cout << W << " : " << endl;
   while(!K.CzyPusta())
     {
       int v = K._Pop();
+      // cout << v << " " << endl;
       if(v == Szukany) break;
-      cout << v << " " << endl;
       for(unsigned int j = 1; j <= _V; ++j)
 	if(_CzyKrawedz(v,j) && !Odwiedzone[j])
 	  {
@@ -71,21 +82,23 @@ void Graf::BFS(const int W,const int Szukany)const
   delete [] Odwiedzone;
 }
 //******************************************************************
-void Graf::DFS(const int x,const int Wymagany)const
+template <class Typ>
+void Graf<Typ>::DFS(const int x,const int Wymagany)const
 {
+  //cout <<"szykany: " << Wymagany << endl;
   StosTab<int> S;
   bool *Odwiedzony =new bool[_V+1];
   for(unsigned int i = 0; i <= _V; ++i)
     Odwiedzony[i] = false;
   S._Push(x);
   Odwiedzony[x] = true;
+  //cout << x << " : " << endl;
   if(x == Wymagany) return;
-  cout << x << " : " << endl;
   while(!S.CzyPusty())
     {
       int k = S._Pop();
+      // cout << k << " " << endl;
       if(k == Wymagany) break;
-      cout << k << " " << endl;
       for(unsigned int i = _V; i>0; --i)
 	if(_CzyKrawedz(k,i) && !Odwiedzony[i])
 	  {
@@ -96,29 +109,53 @@ void Graf::DFS(const int x,const int Wymagany)const
   delete [] Odwiedzony;
 }
 //******************************************************************
-void Graf:: _Zaladuj(unsigned int n)
-  {
-    
-    const unsigned int m = (n/2);
-    for(unsigned int i = 1; i < n; ++i)
-      {
-       	if(i < m)
-	  {
-	    _DodajKrawedz(i,i+1);
-	    _DodajKrawedz(i,m+i);
-	    _DodajKrawedz(i,m+i+1);
-	  }
-	if(i > m){
+template <class Typ>
+void Graf<Typ>:: _Zaladuj(unsigned int n)
+{
+  const unsigned int m = (n/2);
+  for(unsigned int i = 1; i < n; ++i)
+    {
+      if(i < m)
+	{
 	  _DodajKrawedz(i,i+1);
-	  _DodajKrawedz(i,n-i+1);}
-      }
-  }
-void Graf::_Wykonaj(unsigned int n)const
+	  _DodajKrawedz(i,m+i);
+	  _DodajKrawedz(i,m+i+1);
+	}
+      if(i > m)
+	_DodajKrawedz(i,i+1);
+      
+    }
+}
+//******************************************************************
+template <class Typ>
+void Graf<Typ>::_Wykonaj(unsigned int n)const
 {
   const int m = n/2;
   this ->BFS(1,m);
 }
-void Graf::_Zwolnij()
+//******************************************************************
+template <class Typ>
+void Graf<Typ>::_Zwolnij()
 {
   this->Graf::~Graf();
 }
+//******************************************************************
+template<class Typ>
+void Graf<Typ>::_DodajWartoscWierzcholka(const unsigned int indeks,
+					 const Typ Wartosc)
+{
+  _VMacierz[indeks] = Wartosc;
+}
+//******************************************************************
+template<class Typ>
+Typ Graf<Typ>::_ZwrocWartoscWierzcholka(const unsigned int indeks)const
+{
+  return _VMacierz[indeks];
+}
+//******************************************************************
+template<class Typ>
+unsigned int Graf<Typ>::_IloscKrawedzi()const
+{
+  return _E;
+}
+//******************************************************************
