@@ -23,6 +23,7 @@ int main()
     {
       Graf<int> K(Tablica_Rozmiarow[i]);
       K._Zaladuj(Tablica_Rozmiarow[i]);
+      cout <<"E: " << K._IloscKrawedzi() << endl;
       S -> _WykonajTest(K,Tablica_Rozmiarow[i]);
     }
 

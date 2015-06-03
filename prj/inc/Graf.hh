@@ -52,7 +52,7 @@ private:
  * Pole zawiera informace o polaczeniach miedzy wierzcholkami w grafie
  */
 //***********************************************************************************
-  bool ** _EMacierz;
+  int ** _EMacierz;
 //***********************************************************************************
 /*!
  *\brief Pole klasy Graf

@@ -1,0 +1,68 @@
+\documentclass[12pt,a4paper,titlepage]{article}
+\usepackage[T1]{fontenc}
+\usepackage[polish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{graphicx}
+\selectlanguage{polish}
+\setlength{\parindent}{5mm} %ustawi rozmiar wcie˛cia na pocza˛tku kaz˙dego akapitu na 0mm,
+\setlength{\parskip}{4mm} %
+\title{Sprawozdanie z ćwiczenia laboratoryjnego IX\newline Graf}
+\date{03.06.2015}
+\author{Bartłomiej Ankowski}
+\begin{document}
+\maketitle
+\pagestyle{empty}
+%\pagestyle{headings}
+\tableofcontents
+\section{Wstęp}
+Celem zadania było zamodelowanie i zaimplementowanie Grafu. 
+W następnym kroku należało zaimplenetować algorytmy przeszukiwania grafu wszerz(BFS) i w gląb(DFS).
+Za ich pomocą została wyszukana dana ścieżka w grafie, dla różnych rozmiarów struktury. 
+\section{Realizacja}
+W przypadku tej realizacji, graf został zamodelowany jako macierz sąsiedztw.
+Ta dwuwymiarowa tablia zawiera dane na temat połączeń między wierzchołkami.
+Macierz jest rozmiaru V(G) na V(G). Wyraz $i$-tego wierwsza i $j$-tej kolumny,
+zawiera wartość będąca liczbą krawędzi jaka łączy dane wierzchołki.
+Rozwiązanie to pozwala na reprezentacje grafów, zawierającego krawędzie wielokrotne i pętle własne.
+Do niewątpliwych wad takiego rozwiązania należy wysoka złożoność pamięciowa $O(n^2)$, oraz fakt, że czas potrzebny do przejrzenia zbioru krawędzi jest proporcjonalny do kwadratu liczby wierzchołków(złożoność wynosi $O(n^2)$ zamiast proporcjonalnie do ilości krawędzi.
+\section{Złożoność obliczeniowa}
+\subsection{Algorytm BFS}
+Ze względu na konstrukcje algorytmu i fakt przechodzenia grafu od korzenia i polegającego na odwiedzeniu wszystkich osiągalnych z niego wierzchołków.Wynikiem tego algorytmu jest drzewo przesukiwań,zawierające wszystkie wierzchołki osiągalne z s. Do każdego z tych wierzchołków prowdzi dokładnie jedna ścieżnka, która jest jednocześnie najkrótszą ścieżką w grafie wejściowym.
+Zatem złożoność obliczeniowa wynosi $O(V+E)$, gdzie V-liczba wierzchołków i E- liczba krawędzi.
+\subsection{Algorytm DFS}
+Ze względu na konstrukcje algorytmu i faktu, że wymagane jest badanie wszytskich krawędzi wychodzących z danego wierzchołka,a następnie powrót do wierzchołka,z którego dany wierzchołek został odwiedzony.
+Złozoność obliczeniowa tego algorytmu zależy proporcjonalnie do V- liczby wierzchołków i E-liczby krawędzi, czyli wynosi $O(V+E)$.
+Przy czy znalezienie danej ścieżki wymaga przerwanie wcześniej pracy algorytmu, zatem złożonośc będzie nieco niższa.
+\section{Wyniki Pomiarów}
+Test polegał na 10 krotnym znalezieniu ścięzki, zaczynając od pierwszego wierzchołka i kończąc na numerze wierzchołka, równego ilości wierzchołków w danym grafie.
+\newpage
+\begin{table}[h]
+\begin{center}
+\begin{tabular}{|l|l|l|l|}
+\hline
+V &E  &DFS[ms]  &BFS[ms]  \\ \hline
+50 &96  &0,0113  &0,021  \\ \hline
+100 &196 &0,0388  &0,0624  \\ \hline
+500 &996  &0,626  &1,2503  \\ \hline
+1000 &1996 &2,410  &4,8271  \\ \hline
+5000 &9996  &57,3153  &115,354  \\ \hline
+10000 &19996 &226,973  &462,813 \\ \hline
+20000 &39996  &909,921  &1826,7  \\ \hline
+\end{tabular}
+\caption{Wyniki pomiarów}
+\end{center}
+\end{table}
+\begin{figure}[!htbp]
+\begin{center}
+\includegraphics[scale=0.6]{graff.png}
+\caption{Wykres zależności czasu wyszukania ścieżki w grafie od jego ilości wierzchołków}
+\end{center}
+\end{figure}
+\section{Wnioski}
+\begin{itemize}
+\item Ze względu na generowania grafu na podstawie pewnego scehmatu,można stwierdzić, że w wynikach pomiarów występuje determinizm.Zatem można udowodnić teoretyczną złożoność obliczeniową na podstawie powyższych wyników testów. Oba zaimplementowane algorytmy posiadają prawidłową złożoność obliczeniową, która jest proporcjonalna do ilośći wierzchołków i krawędzi.
+
+\item W wynikach pomiarów wyróznia się zaleznośc, taka że BFS działa dwukrotnie szybciej od DFS, jednak nie należy przykładać do tego większej wagi, ponieważ ze względu na mechanizm tych algorytmów będa uzyskiwana różne proporcje w zależności od wygenerowanego grafu i szukanej ścieżki.
+\end{itemize}
+\end{document}

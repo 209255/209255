@@ -9,12 +9,12 @@ template <class Typ>
 Graf<Typ>::Graf(unsigned int k):
   _V(k),_E(0)
 {
-  _EMacierz = new bool *[_V];
+  _EMacierz = new int *[_V];
   for(unsigned int i = 0; i < _V; ++i)
     {
-      _EMacierz[i] = new bool [_V];
+      _EMacierz[i] = new int [_V];
       for(unsigned int j = 0; j < _V; ++j)
-	_EMacierz[i][j] = false;
+	_EMacierz[i][j] = 0;
     }
   
   _VMacierz = new Typ[_V];
@@ -36,7 +36,7 @@ void Graf<Typ>::_DodajKrawedz(const unsigned int i, const unsigned int j)
 {
   // cout <<"i: " << i << "j: " << j <<endl;
   if(!(i <= _V && j <= _V)) throw"Brak elementu";
-  _EMacierz[j-1][i-1] = _EMacierz[i-1][j-1] = true;
+  _EMacierz[j-1][i-1] = _EMacierz[i-1][j-1] +=1;
   ++_E;
 }
 //******************************************************************
